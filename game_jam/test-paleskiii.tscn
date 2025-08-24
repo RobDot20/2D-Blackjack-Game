@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bltlbvg5hnuk2"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_p8w5s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="MultiplayerSpawner"]
+replication_config = SubResource("SceneReplicationConfig_p8w5s")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="test-remote" type="Node2D" parent="Timer"]
