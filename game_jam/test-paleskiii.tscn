@@ -10,3 +10,5 @@
 replication_config = SubResource("SceneReplicationConfig_p8w5s")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="test-remote" type="Node2D" parent="Timer"]
