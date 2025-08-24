@@ -8,3 +8,5 @@
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="MultiplayerSpawner"]
 replication_config = SubResource("SceneReplicationConfig_p8w5s")
+
+[node name="Timer" type="Timer" parent="."]
