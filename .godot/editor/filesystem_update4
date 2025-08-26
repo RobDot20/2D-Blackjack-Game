@@ -1,4 +1,3 @@
-res://src/scenes/player_ui.tscn
 res://src/scenes/game.tscn
 res://src/scripts/game.gd
-res://src/scripts/cards.gd
+res://src/scenes/player_ui.tscn

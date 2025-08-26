@@ -94,15 +94,15 @@ func generate_new_deck(add_joker : bool) :
 							new_card.face = f
 							new_card.suit = i
 							deck_of_cards.deck.append(new_card)
-	
-	#if add_joker == true:
-		#for n in 2:
-			#var new_card := PlayingCard.new()
-			#new_card.is_numbered_card = false
-			#new_card.is_face_card = true
-			#new_card.face = PlayingCard.Faces.JOKER
-			#deck_of_cards.deck.append(new_card)
-	print("function called")
+
+	if add_joker == true:
+		for n in 2:
+			var new_card := PlayingCard.new()
+			new_card.is_numbered_card = false
+			new_card.is_face_card = true
+			new_card.face = PlayingCard.Faces.JOKER
+			deck_of_cards.deck.append(new_card)
+			print("joker function called")
 	return deck_of_cards
 
 func _on_button_button_down() -> void:
