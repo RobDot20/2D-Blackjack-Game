@@ -11,6 +11,14 @@ config_version=5
 [application]
 
 config/name="game_jam"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="uid://eg27lailop8k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
+
+[autoload]
+
+Globals="*res://src/scripts/globals.gd"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

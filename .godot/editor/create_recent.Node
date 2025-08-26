@@ -1,7 +1,14 @@
-Timer
-AnimatedSprite2D
-NinePatchRect
 Button
+Node
+Control
+Label
+Panel
+ProgressBar
+TextEdit
+HBoxContainer
+AnimatedSprite2D
+Timer
+NinePatchRect
 VBoxContainer
 AnimationPlayer
 CharacterBody2D

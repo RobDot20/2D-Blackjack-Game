@@ -1,6 +1,3 @@
-res://node_2d.gd
-res://node_2d.tscn
-res://scenes/main_menu.tscn
-res://scenes/dealer.tscn
-res://scripts/quit.gd
-res://scripts/main_menu.gd
+res://src/scenes/game.tscn
+res://src/scripts/game.gd
+res://src/scenes/player_ui.tscn
