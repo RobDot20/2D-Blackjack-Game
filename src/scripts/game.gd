@@ -57,14 +57,13 @@ extends Node
 #func _process(_delta: float) -> void:
 #
 	#print(deck[1])
-@export var test_deck : Deck
+@export var test_deck := Deck.new(false)
 
 #func _ready() -> void:
 	#test_deck = generate_new_deck(false)
 	#pass
 
 func _on_button_button_down() -> void:
-	test_deck = Deck.generate_new_deck(false)
 	if !test_deck : print("nope")
 	else : print("worked")
 	print(test_deck)

@@ -2,3 +2,4 @@ res://src/scenes/game.tscn
 res://src/scripts/game.gd
 res://src/scenes/player_ui.tscn
 res://src/scripts/deck.gd
+res://src/scripts/cards.gd
