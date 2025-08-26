@@ -5,3 +5,6 @@ res://src/scenes/main_menu.tscn
 res://src/scripts/game.gd
 res://src/scripts/globals.gd
 res://src/scripts/label.gd
+res://src/scripts/nine_patch_rect.gd
+res://src/scenes/card_ui.tscn
+res://src/scripts/cardui.gd

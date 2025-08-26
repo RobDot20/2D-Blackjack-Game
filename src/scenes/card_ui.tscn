@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnpdl6x8bld5q"]
+
+[ext_resource type="Texture2D" uid="uid://b8u3c8y2j16vp" path="res://assets/cards/Cards_sheet.jpg" id="1_icpdg"]
+[ext_resource type="Script" uid="uid://ctsnjmi2v0cyn" path="res://src/scripts/cardui.gd" id="2_afmt2"]
+
+[node name="CardUI" type="NinePatchRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_icpdg")
+region_rect = Rect2(24, 32, 616, 824)
+script = ExtResource("2_afmt2")

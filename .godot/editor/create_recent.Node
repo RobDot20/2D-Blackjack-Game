@@ -1,3 +1,5 @@
+NinePatchRect
+TextureRect
 Button
 Node
 Control
@@ -8,7 +10,5 @@ TextEdit
 HBoxContainer
 AnimatedSprite2D
 Timer
-NinePatchRect
 VBoxContainer
 AnimationPlayer
-CharacterBody2D
