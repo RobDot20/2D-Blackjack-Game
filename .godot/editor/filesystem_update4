@@ -1,5 +1,7 @@
-res://src/scenes/game.tscn
-res://src/scripts/game.gd
-res://src/scenes/player_ui.tscn
 res://src/scripts/deck.gd
-res://src/scripts/cards.gd
+res://src/scenes/player_ui.tscn
+res://src/scenes/game.tscn
+res://src/scenes/main_menu.tscn
+res://src/scripts/game.gd
+res://src/scripts/globals.gd
+res://src/scripts/label.gd
