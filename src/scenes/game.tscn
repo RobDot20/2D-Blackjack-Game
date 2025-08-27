@@ -1,7 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=14 format=3 uid="uid://eg27lailop8k"]
 
 [ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
 [ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
+[ext_resource type="Texture2D" uid="uid://co480gh53vf68" path="res://assets/cards/Clubs/Untitled15_20250826170637_1.jpeg" id="3_5dxuo"]
+[ext_resource type="Texture2D" uid="uid://dw7yily23jvnr" path="res://assets/cards/Clubs/Untitled15_20250826170637_2.jpeg" id="4_tnd0m"]
+[ext_resource type="Texture2D" uid="uid://cw41osmfmcbab" path="res://assets/cards/Clubs/Untitled15_20250826170637_3.jpeg" id="5_0fcgq"]
+[ext_resource type="Texture2D" uid="uid://bw6wkt7ks550m" path="res://assets/cards/Clubs/Untitled15_20250826170637_4.jpeg" id="6_3xf06"]
+[ext_resource type="Texture2D" uid="uid://eukk13sgbbei" path="res://assets/cards/Clubs/Untitled15_20250826170637_5.jpeg" id="7_873yf"]
+[ext_resource type="Texture2D" uid="uid://dqdjsot3lxc4d" path="res://assets/cards/Clubs/Untitled15_20250826170637_6.jpeg" id="8_nm604"]
+[ext_resource type="Texture2D" uid="uid://cl48e1yond6ao" path="res://assets/cards/Clubs/Untitled15_20250826170637_7.jpeg" id="9_3ucld"]
+[ext_resource type="Texture2D" uid="uid://na8u03hi67ms" path="res://assets/cards/Clubs/Untitled15_20250826170637_8.jpeg" id="10_lkrtx"]
+[ext_resource type="Texture2D" uid="uid://spmp7x6muao8" path="res://assets/cards/Clubs/Untitled15_20250826170637_9.jpeg" id="11_ta85g"]
+[ext_resource type="Texture2D" uid="uid://b0i0eunanh4vx" path="res://assets/cards/Clubs/Untitled15_20250826170637_10.jpeg" id="12_44dqv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xp0n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5dxuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5dxuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tnd0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0fcgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3xf06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_873yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nm604")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3ucld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lkrtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ta85g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_44dqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_covw0")
@@ -22,5 +73,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "generate
 "
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3xp0n")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
