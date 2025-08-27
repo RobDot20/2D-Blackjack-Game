@@ -35,16 +35,52 @@ func _init(add_joker : bool) :
 # DE URMAT: FUNCTIE CARE IA 2 POZITII DE CARTI RANDOM DIN ARRAY SI LE DA OWNERSHIP = 1 SI DUPA LA FEL NUMAI CA OWNERSHIP = 3
 
 func randOwnership(n : int, owner : int):
+	var pos : int
 	for i in n:
-		deck[randi_range(1,deck.size())].ownership = owner
+		# Cartea trebuie sa nu fie detinuta de nimeni ca sa poata primi ownership
+		while(deck[pos].ownership != 0):
+			pos = randi_range(0, deck.size()-1)
+		deck[pos].ownership = owner
 
-#func resetOwnership():
-	#for i in range(1, deck.size()):
+func dealCards():
+	randOwnership(2, 1)
+	randOwnership(2, 3)
 
-func printPlayerCards():
-	for i in range(1, deck.size()):
-		if deck[i].ownership == 1:
-			print("Card value: ", deck[i].value," Deck Suit: ", PlayingCard.Suit.keys()[deck[i].suit])
+func resetOwnership():
+	for i in range(0, deck.size()):
+		match deck[i].ownership:
+			0:
+				pass
+			_:
+				deck[i].ownership = 0
+
+func printCards(owner : int):
+	match owner:
+		0:
+			print("Table cards:")
+		1:
+			print("Player Cards:")
+		2:
+			print("Player Split Cards:")
+		3:
+			print("Dealer Cards:")
+	print("--------")
+	for i in deck.size():
+		if deck[i].ownership == owner:
+			print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n")	
+
+#func printPlayerCards():
+	#print("Player Cards:\n--------")
+	#for i in deck.size():
+		#if deck[i].ownership == 1:
+			#print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit])
+#
+#func printDealerCards():
+	#print("\nDealer Cards:\n--------")
+	#for i in deck.size():
+		#if deck[i].ownership == 3:
+			#print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit])
+
 
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT
