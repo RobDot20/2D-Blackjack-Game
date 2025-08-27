@@ -6,10 +6,14 @@ extends Node
 
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
-	else : print("worked")
+	#else : print("worked")
+	test_deck.randOwnership(2,1)
+	test_deck.randOwnership(2,3)
+	test_deck.printCards(1)
+	test_deck.printCards(3)
+	test_deck.resetOwnership()
 	
-	test_deck.randOwnership(2, 1)
-	test_deck.printPlayerCards()
+  
 	show_cards()
 
 func show_cards() :
