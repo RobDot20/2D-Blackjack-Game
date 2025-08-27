@@ -77,10 +77,13 @@ func randOwnership(n : int, owner : int):
 	for i in n:
 		deck[randi_range(1,deck.size())].ownership = owner
 
+#func resetOwnership():
+	#for i in range(1, deck.size()):
+
 func printPlayerCards():
 	for i in range(1, deck.size()):
 		if deck[i].ownership == 1:
-			print("Card value: ", deck[i].value,"Deck Suit: ", deck[i].suit)
+			print("Card value: ", deck[i].value,"Deck Suit: ", PlayingCard.Suit.keys()[i])
 
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT
