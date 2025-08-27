@@ -59,10 +59,6 @@ extends Node
 	#print(deck[1])
 @export var test_deck := Deck.new(false)
 
-#func _ready() -> void:
-	#test_deck = generate_new_deck(false)
-	#pass
-
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
 	#else : print("worked")
