@@ -11,10 +11,8 @@ func _on_button_button_down() -> void:
 	test_deck.randOwnership(2,3)
 	test_deck.printCards(1)
 	test_deck.printCards(3)
-	test_deck.resetOwnership()
-	
-  
 	show_cards()
+	test_deck.resetOwnership()
 
 func show_cards() :
 	for i in range (0,test_deck.deck.size()) :
