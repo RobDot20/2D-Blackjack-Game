@@ -1,6 +1,7 @@
+Button
+Timer
 NinePatchRect
 TextureRect
-Button
 Node
 Control
 Label
@@ -9,6 +10,5 @@ ProgressBar
 TextEdit
 HBoxContainer
 AnimatedSprite2D
-Timer
 VBoxContainer
 AnimationPlayer

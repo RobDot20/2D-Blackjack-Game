@@ -4,8 +4,17 @@
 [ext_resource type="Script" uid="uid://ctsnjmi2v0cyn" path="res://src/scripts/cardui.gd" id="2_afmt2"]
 
 [node name="CardUI" type="NinePatchRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 59.0
+offset_bottom = 66.0
 texture = ExtResource("1_icpdg")
 region_rect = Rect2(24, 32, 616, 824)
 script = ExtResource("2_afmt2")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
