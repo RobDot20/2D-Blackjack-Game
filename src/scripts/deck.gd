@@ -4,7 +4,7 @@ class_name Deck
 @export var deck: Array[PlayingCard]
 
 # Functie care initializeaza deck-ul de carti, se apeleaza cu Deck.new()
-func _init(_add_joker : bool) :
+func _init(add_joker : bool) :
 	# Creeam cate un set de carti pentru fiecare culoare
 	for i in PlayingCard.Suit.values():
 		match i:
@@ -24,13 +24,13 @@ func _init(_add_joker : bool) :
 					new_card.ownership = 0 # by default cardul nu este detinut de nimeni
 					deck.append(new_card)
 # Jokerii nu au culoar sau valoare deoarece ne gandim ce (si daca) rol vor avea
-	#if add_joker == true:
-		#for n in 2:
-			#var new_card := PlayingCard.new()
-			#new_card.number = 14
-			#new_card.ownership = 0
-			#deck.append(new_card)
-			#print("joker function called")
+	if add_joker == true:
+		for n in 2:
+			var new_card := PlayingCard.new()
+			new_card.number = 14
+			new_card.ownership = 0
+			deck.append(new_card)
+			print("joker function called")
 			
 # DE URMAT: FUNCTIE CARE IA 2 POZITII DE CARTI RANDOM DIN ARRAY SI LE DA OWNERSHIP = 1 SI DUPA LA FEL NUMAI CA OWNERSHIP = 3
 
