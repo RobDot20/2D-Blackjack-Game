@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4apg1ee1n5ww"]
+
+[ext_resource type="Texture2D" uid="uid://dwrivx5jsnxpi" path="res://assets/sprites/scene/dealer supi.png" id="2_7nxmg"]
+[ext_resource type="Script" uid="uid://ikbtb53ght7g" path="res://src/scenes/winplayer.gd" id="3_7nxmg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gb3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7nxmg")
+}],
+"loop": true,
+"name": &"suparare",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 290)
+scale = Vector2(0.55534, 0.568023)
+sprite_frames = SubResource("SpriteFrames_5gb3m")
+animation = &"suparare"
+script = ExtResource("3_7nxmg")

@@ -1,7 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=6 format=3 uid="uid://eg27lailop8k"]
 
-[ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
-[ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
 [ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="3_lcg6w"]
 [ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="4_gh3at"]
 [ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="5_flib5"]
@@ -35,9 +33,6 @@ animations = [{
 }]
 
 [node name="Game" type="Node"]
-script = ExtResource("1_covw0")
-
-[node name="Player UI" parent="." instance=ExtResource("2_covw0")]
 
 [node name="Node2D" type="Node2D" parent="."]
 
