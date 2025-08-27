@@ -7,8 +7,8 @@
 #dam load
 extends NinePatchRect
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var button: Button = $Button
+@onready var card_ui: NinePatchRect = $CardUI
 
 # Load your sprite sheet
 var deck_texture: Texture2D = preload("res://assets/cards/Cards_sheet.jpg")
@@ -32,4 +32,3 @@ func _on_button_pressed():
 	var row = randi() % ROWS
 	print(row)
 	region_rect = Rect2(col * CARD_WIDTH, row * CARD_HEIGHT, CARD_WIDTH, CARD_HEIGHT)
-	

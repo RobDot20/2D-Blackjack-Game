@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dntfdtlk7iyey"]
+
+[ext_resource type="Texture2D" path="res://assets/masa_png.png" id="1_kmebh"]
+[ext_resource type="PackedScene" uid="uid://dnpdl6x8bld5q" path="res://src/scenes/card_ui.tscn" id="2_q71iq"]
+[ext_resource type="Texture2D" uid="uid://b8u3c8y2j16vp" path="res://assets/cards/Cards_sheet.jpg" id="3_q71iq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.11458
+anchor_bottom = 1.0571
+texture = ExtResource("1_kmebh")
+metadata/_edit_use_anchors_ = true
+
+[node name="CardUI" parent="." instance=ExtResource("2_q71iq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.242188
+anchor_top = 0.614198
+anchor_right = 0.421875
+anchor_bottom = 0.986111
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(778, 241)
+texture = ExtResource("3_q71iq")
+hframes = 12
+vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 8038, 3358)

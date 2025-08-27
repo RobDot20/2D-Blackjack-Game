@@ -1,10 +1,4 @@
-res://src/scripts/cards.gd
-res://src/scripts/cardui.gd
-res://src/scripts/deck.gd
-res://src/scripts/game.gd
-res://src/scripts/globals.gd
-res://src/scripts/label.gd
-res://src/scenes/card_ui.tscn
-res://src/scenes/player_ui.tscn
 res://src/scenes/game.tscn
-res://src/scenes/main_menu.tscn
+res://src/scenes/card_ui.tscn
+res://src/scenes/game_scene.tscn
+res://src/scripts/cardui.gd
