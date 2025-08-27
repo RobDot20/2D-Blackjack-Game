@@ -1,6 +1,0 @@
-res://node_2d.gd
-res://node_2d.tscn
-res://scenes/main_menu.tscn
-res://scenes/dealer.tscn
-res://scripts/quit.gd
-res://scripts/main_menu.gd
