@@ -1,14 +1,6 @@
 extends Resource
 class_name PlayingCard
 
-enum Faces {
-	NULL,
-	JACK,
-	QUEEN,
-	KING,
-	JOKER
-}
-
 enum Suit {
 	NULL,
 	HEARTS,
