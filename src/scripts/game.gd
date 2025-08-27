@@ -10,6 +10,10 @@ func _on_button_button_down() -> void:
 	
 	test_deck.randOwnership(2, 1)
 	test_deck.printPlayerCards()
+	show_cards()
 
 func show_cards() :
-	pass
+	for i in range (0,test_deck.deck.size()) :
+		print(test_deck.deck[i].number,PlayingCard.Suit.keys()[test_deck.deck[i].suit])
+		if test_deck.deck[i].ownership == 1 :
+			animated_sprite_2d.frame = i

@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=17 format=3 uid="uid://eg27lailop8k"]
 
 [ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
+[ext_resource type="Script" uid="uid://dtdkp0o12xioo" path="res://src/scripts/cards.gd" id="2_0fcgq"]
 [ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
+[ext_resource type="Script" uid="uid://dmi5osm655v1r" path="res://src/scripts/deck.gd" id="3_3xf06"]
 [ext_resource type="Texture2D" uid="uid://co480gh53vf68" path="res://assets/cards/Clubs/Untitled15_20250826170637_1.jpeg" id="3_5dxuo"]
 [ext_resource type="Texture2D" uid="uid://dw7yily23jvnr" path="res://assets/cards/Clubs/Untitled15_20250826170637_2.jpeg" id="4_tnd0m"]
 [ext_resource type="Texture2D" uid="uid://cw41osmfmcbab" path="res://assets/cards/Clubs/Untitled15_20250826170637_3.jpeg" id="5_0fcgq"]
@@ -12,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://na8u03hi67ms" path="res://assets/cards/Clubs/Untitled15_20250826170637_8.jpeg" id="10_lkrtx"]
 [ext_resource type="Texture2D" uid="uid://spmp7x6muao8" path="res://assets/cards/Clubs/Untitled15_20250826170637_9.jpeg" id="11_ta85g"]
 [ext_resource type="Texture2D" uid="uid://b0i0eunanh4vx" path="res://assets/cards/Clubs/Untitled15_20250826170637_10.jpeg" id="12_44dqv"]
+
+[sub_resource type="Resource" id="Resource_873yf"]
+script = ExtResource("3_3xf06")
+deck = Array[ExtResource("2_0fcgq")]([])
+metadata/_custom_type_script = "uid://dmi5osm655v1r"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3xp0n"]
 animations = [{
@@ -56,6 +63,7 @@ animations = [{
 
 [node name="Game" type="Node"]
 script = ExtResource("1_covw0")
+test_deck = SubResource("Resource_873yf")
 
 [node name="Player UI" parent="." instance=ExtResource("2_covw0")]
 
@@ -75,6 +83,8 @@ text = "generate
 "
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(349.5, 461.5)
+scale = Vector2(0.246082, 0.220519)
 sprite_frames = SubResource("SpriteFrames_3xp0n")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
