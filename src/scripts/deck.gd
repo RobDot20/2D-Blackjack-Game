@@ -72,6 +72,16 @@ func _init(add_joker : bool) :
 			print("joker function called")
 			
 # DE URMAT: FUNCTIE CARE IA 2 POZITII DE CARTI RANDOM DIN ARRAY SI LE DA OWNERSHIP = 1 SI DUPA LA FEL NUMAI CA OWNERSHIP = 3
+
+func randOwnership(n : int, owner : int):
+	for i in n:
+		deck[randi_range(1,deck.size())].ownership = owner
+
+func printPlayerCards():
+	for i in range(1, deck.size()):
+		if deck[i].ownership == 1:
+			print("Card value: ", deck[i].value,"Deck Suit: ", deck[i].suit)
+
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT
 # FUNCTIE CARE MODIFICA VALOAREA DE OWNERSHIP A CELEI DA DOUA CARTI A PLAYERULUI LA VALOAREA OWNERSHIP = 2
