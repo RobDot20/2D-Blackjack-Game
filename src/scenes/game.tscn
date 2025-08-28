@@ -14,6 +14,13 @@ offset_right = 1284.0
 offset_bottom = 685.0
 texture = ExtResource("2_lepm3")
 expand_mode = 2
+[gd_scene load_steps=3 format=3 uid="uid://eg27lailop8k"]
+
+[ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
+[ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_covw0")
 
 [node name="Player UI" parent="." instance=ExtResource("2_covw0")]
 

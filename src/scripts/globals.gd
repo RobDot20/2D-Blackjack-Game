@@ -1,3 +1,3 @@
 extends Node
 
-var player_money = 100
+var player_money = 0
