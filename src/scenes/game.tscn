@@ -1,76 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://eg27lailop8k"]
-
-[ext_resource type="Script" uid="uid://cerfikmp1brlf" path="res://src/scenes/dealer.gd" id="1_flib5"]
-[ext_resource type="Texture2D" uid="uid://dwrivx5jsnxpi" path="res://assets/sprites/scene/dealer supi.png" id="1_gh3at"]
-[ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="3_lcg6w"]
-[ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="4_gh3at"]
-[ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="5_flib5"]
-[ext_resource type="Texture2D" uid="uid://c601c17vrgxay" path="res://assets/sprites/scene/castig.png" id="5_h2mn8"]
-[ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="6_6e0h8"]
-[ext_resource type="Script" uid="uid://ga33gbf85hoy" path="res://src/scenes/state_machine.gd" id="7_bd8mh"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6e0h8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_gh3at")
-}],
-"loop": true,
-"name": &"castiga jucatorul",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_gh3at")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_flib5")
-}],
-"loop": true,
-"name": &"distras",
-"speed": 0.5
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_lcg6w")
-}],
-"loop": true,
-"name": &"front",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_h2mn8")
-}],
-"loop": true,
-"name": &"pierde jucatorul",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_6e0h8")
-}],
-"loop": true,
-"name": &"te prinde",
-"speed": 5.0
-}]
-
-[sub_resource type="GDScript" id="GDScript_5dxuo"]
+[gd_scene format=3 uid="uid://eg27lailop8k"]
 
 [node name="Game" type="Node"]
-
-[node name="dealer" type="Node2D" parent="."]
-script = ExtResource("1_flib5")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dealer"]
-position = Vector2(548, 269)
-sprite_frames = SubResource("SpriteFrames_6e0h8")
-animation = &"front"
-frame_progress = 0.999312
-script = SubResource("GDScript_5dxuo")
-
-[node name="Statemachine" type="Node" parent="dealer"]
-script = ExtResource("7_bd8mh")
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 8
@@ -87,21 +17,4 @@ grow_vertical = 2
 text = "generate
 "
 
-[node name="Spell1" type="Button" parent="."]
-offset_left = 946.0
-offset_top = 563.0
-offset_right = 1024.0
-offset_bottom = 632.0
-text = "spell 1"
-
-[node name="Spell2" type="Button" parent="."]
-offset_left = 1055.0
-offset_top = 565.0
-offset_right = 1129.0
-offset_bottom = 631.0
-text = "spell 2
-"
-
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="pressed" from="Spell1" to="dealer" method="_on_spell_1_pressed"]
-[connection signal="pressed" from="Spell2" to="dealer" method="_on_spell_2_pressed"]

@@ -12,7 +12,7 @@ func _process(delta):
 
 	match current_state:
 		State.front:
-			if state_time > 3.0:
+			if state_time > 2.0:
 				set_state(State.distras)
 
 		State.distras:
