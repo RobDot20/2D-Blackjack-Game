@@ -42,6 +42,7 @@ func randOwnership(n : int, owner : int):
 			pos = randi_range(0, deck.size()-1)
 		deck[pos].ownership = owner
 
+
 func dealCards():
 	randOwnership(2, 1)
 	randOwnership(2, 3)
@@ -67,7 +68,7 @@ func printCards(owner : int):
 	print("--------")
 	for i in deck.size():
 		if deck[i].ownership == owner:
-			print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n")	
+			print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
 
 #func printPlayerCards():
 	#print("Player Cards:\n--------")
