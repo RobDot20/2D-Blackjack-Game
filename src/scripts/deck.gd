@@ -39,13 +39,14 @@ func _init(add_joker : bool) :
 func randOwnership(n : int, owner : int):
 	var deck_size := deck.size()-1
 	var pos := randi_range(0, deck_size)
+	var log : Array
 	for i in n:
 		# Cartea trebuie sa nu fie detinuta de nimeni ca sa poata primi ownership
 		while(deck[pos].ownership != 0):
 			pos = randi_range(0, deck_size)
 		deck[pos].ownership = owner
-	if n == 1 :
-		return pos
+		log.append(pos)
+	return log
 
 
 func dealCards():
