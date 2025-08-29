@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://detb680gr1mf6"]
+
+[ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="1_4sqoj"]
+[ext_resource type="Texture2D" uid="uid://bfrngdf8d2ord" path="res://assets/sprites/scene/dealer pierzator.png" id="2_7req8"]
+[ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="3_xseoh"]
+[ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="4_16aoc"]
+[ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="5_xddcc"]
+[ext_resource type="Texture2D" uid="uid://c601c17vrgxay" path="res://assets/sprites/scene/castig.png" id="6_5pd5o"]
+[ext_resource type="Texture2D" uid="uid://c3yy18l40l64a" path="res://assets/sprites/scene/reactieprins.png" id="7_acjdy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpjpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4sqoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7req8")
+}],
+"loop": true,
+"name": &"castiga jucatorul",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xseoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_16aoc")
+}],
+"loop": true,
+"name": &"distras",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xddcc")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5pd5o")
+}],
+"loop": true,
+"name": &"pierde jucatorul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_acjdy")
+}],
+"loop": true,
+"name": &"te prinde",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_rebag"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(548, 269)
+sprite_frames = SubResource("SpriteFrames_qpjpx")
+animation = &"castiga jucatorul"
+script = SubResource("GDScript_rebag")
