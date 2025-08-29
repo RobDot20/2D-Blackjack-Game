@@ -16,7 +16,9 @@ func _init(add_joker : bool) :
 				for m in range(1,14):
 					var new_card := PlayingCard.new()
 					new_card.number = m
-					if(m < 10): # In blackjack, fiecare carte cu numar mai mare de 10 are tot valoare 10, asa ca avem number si value separate
+					if(m == 1):
+						new_card.value = 11 # Dam la as valoarea 11 by default, iar apoi in functia addSlot (functie in care aparent calculam si valoarea totala a ownerului) scadem 10 daca valoarea totala este >21 (adica potential bust salvat de catre as)
+					else: if(m < 10 && m > 1): # In blackjack, fiecare carte cu numar mai mare de 10 are tot valoare 10, asa ca avem number si value separate
 						new_card.value = m
 					else:
 						new_card.value = 10

@@ -40,7 +40,10 @@ func add_slot(nr_rep:int,target:int):
 				update_card_slots_pos(new_slot,card_pos)
 				new_slot.position.x += x_offset
 				x_offset += x_step
-				hand_score += test_deck.deck[card_pos].value
+				if(test_deck.deck[card_pos].number == 1 && hand_score+test_deck.deck[card_pos].value > 21):
+					hand_score += test_deck.deck[card_pos].value - 10
+				else:
+					hand_score += test_deck.deck[card_pos].value
 		3:
 			for i in nr_rep:
 				var new_slot = card_slot.instantiate()
