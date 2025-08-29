@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm8jpy4f3q1li"]
+
+[ext_resource type="Script" uid="uid://cerfikmp1brlf" path="res://src/scripts/dealer.gd" id="1_re077"]
+[ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="2_r7u6n"]
+[ext_resource type="Texture2D" uid="uid://bfrngdf8d2ord" path="res://assets/sprites/scene/dealer pierzator.png" id="3_yjs24"]
+[ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="4_jjs13"]
+[ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="5_d1tnp"]
+[ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="6_676hj"]
+[ext_resource type="Texture2D" uid="uid://c601c17vrgxay" path="res://assets/sprites/scene/castig.png" id="7_l0u8g"]
+[ext_resource type="Texture2D" uid="uid://c3yy18l40l64a" path="res://assets/sprites/scene/reactieprins.png" id="8_5ce41"]
+[ext_resource type="Script" uid="uid://ga33gbf85hoy" path="res://src/scripts/state_machine.gd" id="9_35h34"]
+
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xs1y8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r7u6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yjs24")
+}],
+"loop": true,
+"name": &"castiga jucatorul",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jjs13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d1tnp")
+}],
+"loop": true,
+"name": &"distras",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_676hj")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_l0u8g")
+}],
+"loop": true,
+"name": &"pierde jucatorul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5ce41")
+}],
+"loop": true,
+"name": &"te prinde",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_58hj7"]
+
+[node name="Dealerul" type="Node"]
+
+[node name="dealer" type="Node2D" parent="."]
+script = ExtResource("1_re077")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dealer"]
+position = Vector2(548, 269)
+sprite_frames = SubResource("SpriteFrames_xs1y8")
+animation = &"castiga jucatorul"
+script = SubResource("GDScript_58hj7")
+
+[node name="Statemachine" type="Node" parent="dealer"]
+script = ExtResource("9_35h34")
+
+[node name="Spell2" type="Button" parent="."]
+offset_left = 1040.0
+offset_top = 563.0
+offset_right = 1114.0
+offset_bottom = 629.0
+text = "spell 2
+"
+
+[node name="Spell1" type="Button" parent="."]
+offset_left = 946.0
+offset_top = 563.0
+offset_right = 1024.0
+offset_bottom = 632.0
+text = "spell 1"
+
+[connection signal="pressed" from="Spell2" to="dealer" method="_on_spell_2_pressed"]
+[connection signal="pressed" from="Spell1" to="dealer" method="_on_spell_1_pressed"]
