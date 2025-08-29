@@ -61,4 +61,8 @@ offset_right = 240.0
 offset_bottom = 574.0
 text = "BUY"
 
+[connection signal="toggled" from="power1" to="." method="power_1_pressed"]
+[connection signal="toggled" from="power2" to="." method="power_2_pressed"]
+[connection signal="toggled" from="power3" to="." method="power_3_pressed"]
+[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Buy" to="." method="buy_pressed"]
