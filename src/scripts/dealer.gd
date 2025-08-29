@@ -28,8 +28,6 @@ func _on_spell_2_pressed():
 	if state_machine.current_state==state_machine.State.front:
 		state_machine.set_state(state_machine.State.nervos)
 
-
-
 func _on_spell_1_pressed():
 	if state_machine.current_state==state_machine.State.front:
 		state_machine.set_state(state_machine.State.nervos)

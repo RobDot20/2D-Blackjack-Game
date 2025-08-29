@@ -75,13 +75,14 @@ func hit():
 func _on_hit_pressed() -> void:
 	hit()
 	if hand_score > 21 :
-		emit_signal("end_round")
 		bust = true
+		emit_signal("end_round")
 
 func _on_dealer_turn() -> void:
 	while dealer_score < 17 :
 		await get_tree().create_timer(0.75).timeout
 		add_slot(1,3)
+		dealer_score_display.text = str(dealer_score)
 	emit_signal("end_round")
 
 func _on_stand_pressed() -> void:
@@ -90,10 +91,12 @@ func _on_stand_pressed() -> void:
 func _on_end_round() -> void:
 	if bust == true :
 		print("Lose :(")
-	if dealer_score > 21 :
+	elif dealer_score > 21 :
 		print("Win!")
 	elif 21 - dealer_score > 21 - hand_score :
 		print("Win!")
 	elif dealer_score == hand_score : 
 		print("Draw :|")
 	else : print("Lose :(")
+
+# Replace with function body.

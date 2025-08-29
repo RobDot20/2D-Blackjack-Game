@@ -1,24 +1,182 @@
-[gd_scene load_steps=4 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=22 format=3 uid="uid://eg27lailop8k"]
 
 [ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
-[ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
+[ext_resource type="Texture2D" uid="uid://ej6cg1iidhoq" path="res://assets/sprites/game_area/shop.jpg" id="2_276xm"]
 [ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/masa_png.png" id="2_lepm3"]
+[ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="4_lcg6w"]
+[ext_resource type="PackedScene" uid="uid://8rqjr1fsrmkm" path="res://src/scenes/dealer.tscn" id="4_yufto"]
+[ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="5_gh3at"]
+[ext_resource type="Texture2D" uid="uid://bh2wtcp3o6wy8" path="res://assets/sprites/game_area/buton_hit.png" id="6_flib5"]
+[ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="7_6e0h8"]
+[ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="7_h2mn8"]
+[ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="8_h2mn8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
+bg_color = Color(0.368627, 0.215686, 0, 0.392157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5amjh"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tlj4"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npwpg"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f3mn"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r0g3"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvnco"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00c4o"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhtyg"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ucim"]
+atlas = ExtResource("5_gh3at")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88rra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5amjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tlj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npwpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f3mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r0g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvnco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00c4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhtyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ucim")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_covw0")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 191.0
-offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_276xm")
+
+[node name="Masa" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 187.0
+offset_right = 4.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lepm3")
 expand_mode = 2
 
-[node name="Player UI" parent="." instance=ExtResource("2_covw0")]
+[node name="Player UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.649306
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Spell 1" type="Button" parent="Player UI/HBoxContainer"]
+layout_mode = 2
+text = "Spell 1"
+
+[node name="Spell 2" type="Button" parent="Player UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Spell 2"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Player UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_bottom = 46.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Player UI/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yeqyw")
+
+[node name="Label" type="Label" parent="Player UI/HBoxContainer2/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.415842
+anchor_top = 0.195652
+anchor_right = 0.692901
+anchor_bottom = 0.728
+offset_right = 0.0169983
+offset_bottom = 24.512
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "100
+"
+horizontal_alignment = 2
+script = ExtResource("4_lcg6w")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/HBoxContainer2/Panel"]
+position = Vector2(17, 21)
+sprite_frames = SubResource("SpriteFrames_88rra")
+animation = &"new_animation"
+frame_progress = 0.488634
 
 [node name="CardStack" type="Node2D" parent="."]
 top_level = true
@@ -49,20 +207,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -40.0
-offset_right = 44.0
+offset_left = -502.0
+offset_top = -251.0
+offset_right = 502.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Hit" type="Button" parent="Buttons"]
+[node name="Hit" type="TextureButton" parent="Buttons"]
 layout_mode = 2
-text = "Hit
-"
+texture_normal = ExtResource("6_flib5")
+texture_pressed = ExtResource("7_6e0h8")
 
-[node name="Stand" type="Button" parent="Buttons"]
+[node name="Stand" type="TextureButton" parent="Buttons"]
 layout_mode = 2
-text = "Stand"
+texture_normal = ExtResource("7_h2mn8")
+texture_pressed = ExtResource("8_h2mn8")
 
 [node name="DealerScore" type="VBoxContainer" parent="."]
 anchors_preset = 6
@@ -83,7 +242,12 @@ text = "Dealer Score:"
 [node name="DealerScoreDisplay" type="Label" parent="DealerScore"]
 layout_mode = 2
 
+[node name="dealer" parent="." instance=ExtResource("4_yufto")]
+position = Vector2(929, 380)
+
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Spell 1" to="dealer" method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Spell 2" to="dealer" method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Buttons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/Stand" to="." method="_on_stand_pressed"]
