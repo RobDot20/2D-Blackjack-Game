@@ -1,67 +1,89 @@
-[gd_scene load_steps=6 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=4 format=3 uid="uid://eg27lailop8k"]
 
 [ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
 [ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
-[ext_resource type="Texture2D" uid="uid://pdq0336y6d18" path="res://assets/masa_png.png" id="2_lepm3"]
-[ext_resource type="PackedScene" uid="uid://c0khibcvvxfwj" path="res://src/scenes/card_slot.tscn" id="6_gh3at"]
-[ext_resource type="Script" uid="uid://b6tufiy0uo6di" path="res://src/scripts/player.gd" id="56_n23ob"]
+[ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/masa_png.png" id="2_lepm3"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_covw0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1284.0
-offset_bottom = 685.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 191.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_lepm3")
 expand_mode = 2
-[gd_scene load_steps=3 format=3 uid="uid://eg27lailop8k"]
-
-[ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
-[ext_resource type="PackedScene" uid="uid://b8ho0tanr0sbv" path="res://src/scenes/player_ui.tscn" id="2_covw0"]
-
-[node name="Game" type="Node"]
-script = ExtResource("1_covw0")
 
 [node name="Player UI" parent="." instance=ExtResource("2_covw0")]
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "generate
-"
+[node name="CardStack" type="Node2D" parent="."]
+top_level = true
+position = Vector2(80, 806)
 
-[node name="Play" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.483507
-anchor_top = 0.688272
-anchor_right = 0.519097
-anchor_bottom = 0.736111
+[node name="DealerStack" type="Node2D" parent="."]
+position = Vector2(757, 625)
+
+[node name="PlayerScore" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 99.0
+offset_bottom = 25.0
+grow_vertical = 2
+
+[node name="ScoreText" type="Label" parent="PlayerScore"]
+layout_mode = 2
+text = "Player score:"
+
+[node name="PlayerScoreDisplay" type="Label" parent="PlayerScore"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -40.0
+offset_right = 44.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Play"
-metadata/_edit_use_anchors_ = true
 
-[node name="Player" type="Node" parent="."]
-script = ExtResource("56_n23ob")
+[node name="Hit" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Hit
+"
 
-[node name="CardSlot" parent="." instance=ExtResource("6_gh3at")]
-unique_name_in_owner = true
-position = Vector2(140, 514)
-scale = Vector2(0.175, 0.175)
+[node name="Stand" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Stand"
 
-[node name="CardSlot2" parent="." instance=ExtResource("6_gh3at")]
-unique_name_in_owner = true
-position = Vector2(290, 514)
-scale = Vector2(0.175, 0.175)
+[node name="DealerScore" type="VBoxContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[node name="DealerScoreText" type="Label" parent="DealerScore"]
+layout_mode = 2
+text = "Dealer Score:"
+
+[node name="DealerScoreDisplay" type="Label" parent="DealerScore"]
+layout_mode = 2
+
+[connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
+[connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="pressed" from="Buttons/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="Buttons/Stand" to="." method="_on_stand_pressed"]

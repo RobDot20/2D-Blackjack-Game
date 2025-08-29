@@ -42,6 +42,8 @@ func randOwnership(n : int, owner : int):
 		while(deck[pos].ownership != 0):
 			pos = randi_range(0, deck_size)
 		deck[pos].ownership = owner
+	if n == 1 :
+		return pos
 
 
 func dealCards():
@@ -55,6 +57,7 @@ func resetOwnership():
 				pass
 			_:
 				deck[i].ownership = 0
+				deck[i].showed = false
 
 func printCards(owner : int):
 	match owner:

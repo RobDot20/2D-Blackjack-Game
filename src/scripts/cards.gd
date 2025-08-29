@@ -16,5 +16,5 @@ enum Suit {
 # Ownership reprezinta detinatorul cartii, unde 0 este masa, 1 este player principal, 2 este player split (optional), 
 # 3 este dealer hand
 @export_range(0,4) var ownership : int
-#@export var face : Faces
+@export var showed : bool = false
 @export var suit : Suit
