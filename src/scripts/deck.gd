@@ -16,7 +16,9 @@ func _init(add_joker : bool) :
 				for m in range(1,14):
 					var new_card := PlayingCard.new()
 					new_card.number = m
-					if(m < 10): # In blackjack, fiecare carte cu numar mai mare de 10 are tot valoare 10, asa ca avem number si value separate
+					if(m == 1):
+						new_card.value = 11 # Dam la as valoarea 11 by default, iar apoi in functia addSlot (functie in care aparent calculam si valoarea totala a ownerului) scadem 10 daca valoarea totala este >21 (adica potential bust salvat de catre as)
+					else: if(m < 10): # In blackjack, fiecare carte cu numar mai mare de 10 are tot valoare 10, asa ca avem number si value separate
 						new_card.value = m
 					else:
 						new_card.value = 10
@@ -42,6 +44,9 @@ func randOwnership(n : int, owner : int):
 		while(deck[pos].ownership != 0):
 			pos = randi_range(0, deck_size)
 		deck[pos].ownership = owner
+	if n == 1 :
+		return pos
+
 
 func dealCards():
 	randOwnership(2, 1)
@@ -54,6 +59,9 @@ func resetOwnership():
 				pass
 			_:
 				deck[i].ownership = 0
+
+func printCard(i):
+	print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
 
 func printCards(owner : int):
 	match owner:
@@ -68,7 +76,8 @@ func printCards(owner : int):
 	print("--------")
 	for i in deck.size():
 		if deck[i].ownership == owner:
-			print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n")	
+			printCard(i)
+			#print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
 
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT

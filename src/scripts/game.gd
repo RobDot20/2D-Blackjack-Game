@@ -58,12 +58,14 @@ extends Node
 #
 	#print(deck[1])
 @export var test_deck := Deck.new(false)
-
+@export var player_inventory := CardInventory.new(test_deck, 1)
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
 	#else : print("worked")
-	test_deck.randOwnership(2,1)
+	test_deck.randOwnership(5,1)
 	test_deck.randOwnership(2,3)
-	test_deck.printCards(1)
-	test_deck.printCards(3)
+	player_inventory.buildInventory()
+	player_inventory.printInventory()
+	#test_deck.printCards(1)
+	#test_deck.printCards(3)
 	test_deck.resetOwnership()
