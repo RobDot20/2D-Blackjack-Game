@@ -5,6 +5,9 @@ extends Node
 @onready var dealer_stack: Node2D = $DealerStack
 @onready var player_score_display: Label = $PlayerScore/PlayerScoreDisplay
 @onready var dealer_score_display: Label = $DealerScore/DealerScoreDisplay
+@onready var dealer: Node2D = $dealer
+@onready var stand_button: TextureButton = $Buttons/Stand
+
 @export var test_deck := Deck.new(false)
 
 signal dealer_turn
@@ -90,16 +93,22 @@ func _on_dealer_turn() -> void:
 
 func _on_stand_pressed() -> void:
 	emit_signal("dealer_turn")
+	stand_button.disabled = true
 
 func _on_end_round() -> void:
 	if bust == true :
 		print("Lose :(")
+		dealer.player_lose()
 	elif dealer_score > 21 :
 		print("Win!")
+		dealer.player_win()
 	elif 21 - dealer_score > 21 - hand_score :
 		print("Win!")
+		dealer.player_win()
 	elif dealer_score == hand_score : 
 		print("Draw :|")
-	else : print("Lose :(")
+	else : 
+		print("Lose :(")
+		dealer.player_lose()
 
 # Replace with function body.

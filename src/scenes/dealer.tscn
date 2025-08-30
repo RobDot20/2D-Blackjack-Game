@@ -19,7 +19,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_7blg5")
 }],
-"loop": true,
+"loop": false,
 "name": &"castiga jucatorul",
 "speed": 0.5
 }, {
@@ -68,7 +68,6 @@ script = ExtResource("1_xjyer")
 scale = Vector2(1, 0.943064)
 sprite_frames = SubResource("SpriteFrames_xs1y8")
 animation = &"distras"
-frame_progress = 0.701215
 script = SubResource("GDScript_58hj7")
 
 [node name="Statemachine" type="Node" parent="."]

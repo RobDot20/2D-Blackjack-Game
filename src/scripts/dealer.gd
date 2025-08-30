@@ -18,11 +18,13 @@ func _on_state_changed(new_state):
 			sprite.play("te prinde")
 		state_machine.State.fericit:
 			sprite.play("pierde jucatorul")
+
 func player_win():
 	state_machine.set_state(state_machine.State.suparat)
 func player_lose():
 	state_machine.set_state(state_machine.State.fericit)
-
+func player_draw():
+	state_machine.set_state(state_machine.State.nervos)
 
 func _on_spell_2_pressed():
 	if state_machine.current_state==state_machine.State.front:
