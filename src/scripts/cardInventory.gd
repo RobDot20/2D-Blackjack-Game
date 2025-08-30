@@ -26,8 +26,11 @@ func printInventory():
 		deck.printCard(i)
 
 # addInventory se apeleaza cu rabdOwnership(nr_carti, inventory.owner)
-func addInventory(arr : Array): # Array deoarece randOwnership returneaza un array cu indexurile noi
-	inventory.append_array(arr)
+func addInventory(arr): # are opt si de array si de int in functie de ce primeste
+	if arr is Array :
+		inventory.append_array(arr)
+	elif arr is int :
+		inventory.append(arr)
 
 func calculateTotalValue():
 	total_value = 0 # reset la valoare inainte de a o calcula
@@ -35,7 +38,8 @@ func calculateTotalValue():
 		print("INDEX IS ON: ",i)
 		total_value += deck.deck[i].value
 	calculateAceValue()
-	
+	return total_value
+
 func calculateAceValue():
 	for i in inventory:
 		if deck.deck[i].number == 1 && total_value > 21:
@@ -46,6 +50,12 @@ func getTotalValue():
 	
 func getInventory():
 	return inventory
+	
+func getLastItem():
+	var nr : int = 0
+	for i in inventory:
+		nr += 1
+	return nr
 	
 func printTotalValue():
 	print("The current total value of owner ", owner, " is: ", total_value)

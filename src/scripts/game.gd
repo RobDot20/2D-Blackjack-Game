@@ -11,6 +11,10 @@ extends Node
 @export var test_deck := Deck.new(false)
 @export var player_inventory := CardInventory.new(test_deck, 1)
 
+var node_array : Array[Slot]
+var nodes_added_p : int
+var nodes_added : Array[int]  #unde punem ca argument de owner e nodul
+
 signal dealer_turn
 signal end_round
 
@@ -23,6 +27,9 @@ var dealer_score := 0
 var bust := false
 
 func _ready() -> void:
+	node_array.resize(10)
+	nodes_added.resize(10)
+	nodes_added.fill(0)
 	add_slot(2,1)
 	add_slot(2,3)
 	player_score_display.text = str(hand_score)
@@ -40,14 +47,19 @@ func add_slot(nr_rep:int,target:int):
 			for i in nr_rep:
 				var new_slot = card_slot.instantiate()
 				card_stack.add_child(new_slot)
+				node_array.append(new_slot)
+				nodes_added[1] += 1
+				nodes_added_p += 1
 				var card_pos = test_deck.randOwnership(1,target)
+				player_inventory.addInventory(card_pos)
 				update_card_slots_pos(new_slot,card_pos)
 				new_slot.position.x += x_offset
 				x_offset += x_step
-				if(test_deck.deck[card_pos].number == 1 && hand_score+test_deck.deck[card_pos].value > 21):
-					hand_score += test_deck.deck[card_pos].value - 10
-				else:
-					hand_score += test_deck.deck[card_pos].value
+				hand_score = player_inventory.calculateTotalValue()
+				#if(test_deck.deck[card_pos].number == 1 && hand_score+test_deck.deck[card_pos].value > 21):
+					#hand_score += test_deck.deck[card_pos].value - 10
+				#else:
+					#hand_score += test_deck.deck[card_pos].value
 		3:
 			for i in nr_rep:
 				var new_slot = card_slot.instantiate()
@@ -58,8 +70,6 @@ func add_slot(nr_rep:int,target:int):
 				xd_offset += x_step
 				dealer_score += test_deck.deck[card_pos].value
 	test_deck.printCards(1)
-	#var duplicated_node = player_card_slot.duplicate_slot()
-	#duplicated_node.position.x = player_card_slot.position.x + 150
 
 func update_card_slots_pos(slot:Slot,pos:int):
 			slot.card = test_deck.deck[pos]
@@ -96,6 +106,10 @@ func _on_stand_pressed() -> void:
 	emit_signal("dealer_turn")
 	stand_button.disabled = true
 
+func swap_spell():
+	test_deck.randOwnership(1,1)
+	update_card_slots_pos(node_array[nodes_added_p],player_inventory.getLastItem())#poate fi creata o functie in inventar sa dea ultima val adaugata sau alta var 
+
 func _on_end_round() -> void:
 	if bust == true :
 		print("Lose :(")
@@ -111,7 +125,6 @@ func _on_end_round() -> void:
 	else : 
 		print("Lose :(")
 		dealer.player_lose()
-
 
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
@@ -131,3 +144,6 @@ func _on_button_button_down() -> void:
 	#test_deck.printCards(3)
 	test_deck.resetOwnership()
 	player_inventory.resetInventory()
+
+func _on_spell_1_pressed() -> void:
+	swap_spell()

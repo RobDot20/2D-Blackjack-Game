@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ej6cg1iidhoq" path="res://assets/sprites/game_area/shop.jpg" id="2_276xm"]
 [ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/masa_png.png" id="2_lepm3"]
 [ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="4_lcg6w"]
-[ext_resource type="PackedScene" uid="uid://8rqjr1fsrmkm" path="res://src/scenes/dealer.tscn" id="4_yufto"]
+[ext_resource type="PackedScene" uid="uid://6kq86axekhxe" path="res://src/scenes/dealer.tscn" id="4_yufto"]
 [ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="5_gh3at"]
 [ext_resource type="Texture2D" uid="uid://bh2wtcp3o6wy8" path="res://assets/sprites/game_area/buton_hit.png" id="6_flib5"]
 [ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="7_6e0h8"]
@@ -247,6 +247,7 @@ position = Vector2(929, 380)
 
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Spell 1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Player UI/HBoxContainer/Spell 1" to="dealer" method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Player UI/HBoxContainer/Spell 2" to="dealer" method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Buttons/Hit" to="." method="_on_hit_pressed"]

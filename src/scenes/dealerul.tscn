@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4fql0bqquhue"]
+[gd_scene load_steps=12 format=3 uid="uid://r46ow637intv"]
 
 [ext_resource type="Script" uid="uid://cerfikmp1brlf" path="res://src/scripts/dealer.gd" id="1_re077"]
 [ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="2_r7u6n"]
