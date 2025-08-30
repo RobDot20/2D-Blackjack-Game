@@ -57,23 +57,18 @@ extends Node
 #func _process(_delta: float) -> void:
 #
 	#print(deck[1])
-@export var test_deck := Deck.new(false)
+@export var test_deck := Deck.new(2, false)
 @export var player_inventory := CardInventory.new(test_deck, 1)
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
 	#else : print("worked")
-	# Mai jos se afla noua modalitate de a seta 2 carti din deck cu ownership 1 si simultan acele carti sa fie adaugate catre inventar, fara ca acesta sa necesite reconstruirea
-	player_inventory.addInventory(test_deck.randOwnership(2,player_inventory.owner))
-	test_deck.randOwnership(2,3)
-	#player_inventory.buildInventory()
+	# Mai jos se afla noua modalitate de a seta N carti din deck cu ownership 1 si simultan acele carti sa fie adaugate catre inventar, fara ca acesta sa necesite reconstruirea
+	player_inventory.addRandom(3)
+	player_inventory.printInventory() # Afisare celor 3 carti adaugate in posesia player
+	player_inventory.resetInventory() # Resetare inventar si al ownershipului cartilor respective
+	# La addCard se introduce indexul cartii din deck, ceea ce poate fi dificil de calculat de noi, asa ca introducem functia getIndex(number, face) pentru a ne usura viata
+	player_inventory.addCard(test_deck.getIndex(2,3, 2))
 	player_inventory.printInventory()
-	#player_inventory.addInventory(test_deck.randOwnership(2,1))
-	#player_inventory.printInventory()
-	player_inventory.calculateTotalValue()
-	player_inventory.printTotalValue()
-	#player_inventory.buildInventory()
-	#player_inventory.printInventory()
-	#test_deck.printCards(1)
-	#test_deck.printCards(3)
-	test_deck.resetOwnership()
-	player_inventory.resetInventory()
+	# Aici e un exemplu de a schimba valoarea cartii in altceva, se poate introduce si direct indexul, sau intre parantezele getIndex(player_inventory[0]) pentru a schimba prima carte a player-ului, etc
+	player_inventory.changeCard(test_deck.getIndex(2, 3, 2), test_deck.getIndex(1,1, 2))
+	player_inventory.printInventory() # Afisare schimbari dupa changeCard
