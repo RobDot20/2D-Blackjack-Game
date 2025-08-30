@@ -57,6 +57,8 @@ func randOwnership(n : int, owner : int):
 			pos = randi_range(0, deck_size)
 		deck[pos].ownership = owner
 		index_log.append(pos)
+	if n == 1:
+		return pos
 	return index_log
 
 func setOwnership(index : int, owner : int):

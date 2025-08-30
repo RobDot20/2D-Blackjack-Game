@@ -57,7 +57,6 @@ func changeCard(original : int, new : int): # Prin original si new ne referim la
 		deck.setOwnership(new, owner)
 	
 	
-
 func calculateTotalValue():
 	total_value = 0 # reset la valoare inainte de a o calcula
 	for i in inventory:

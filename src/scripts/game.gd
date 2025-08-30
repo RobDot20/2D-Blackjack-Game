@@ -106,15 +106,14 @@ func _on_stand_pressed() -> void:
 	stand_button.disabled = true
 
 func swap_spell():
-	player_inventory.addInventory(test_deck.randOwnership(1,1))
+	player_inventory.changeCard(player_inventory.getLastItem(),test_deck.randOwnership(1,1))
 	player_inventory.printInventory()
 	update_card_slots_pos(node_array[nodes_added_p-1],player_inventory.getLastItem())#poate fi creata o functie in inventar sa dea ultima val adaugata sau alta var 
 	hand_score = player_inventory.calculateTotalValue()
+	player_score_display.text = str(hand_score)
 	player_inventory.printTotalValue()
 	test_deck.printCards(1)
-	player_score_display.text = str(hand_score)
-
-
+	
 func _on_end_round() -> void:
 	if bust == true :
 		print("Lose :(")
