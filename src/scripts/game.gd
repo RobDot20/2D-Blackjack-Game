@@ -27,7 +27,6 @@ var dealer_score := 0
 var bust := false
 
 func _ready() -> void:
-	node_array.resize(10)
 	nodes_added.resize(10)
 	nodes_added.fill(0)
 	add_slot(2,1)
@@ -47,7 +46,6 @@ func add_slot(nr_rep:int,target:int):
 			for i in nr_rep:
 				var new_slot = card_slot.instantiate()
 				card_stack.add_child(new_slot)
-				node_array.append(new_slot)
 				nodes_added[1] += 1
 				nodes_added_p += 1
 				var card_pos = test_deck.randOwnership(1,target)
@@ -56,6 +54,7 @@ func add_slot(nr_rep:int,target:int):
 				new_slot.position.x += x_offset
 				x_offset += x_step
 				hand_score = player_inventory.calculateTotalValue()
+				node_array.append(new_slot)
 				#if(test_deck.deck[card_pos].number == 1 && hand_score+test_deck.deck[card_pos].value > 21):
 					#hand_score += test_deck.deck[card_pos].value - 10
 				#else:
@@ -107,8 +106,14 @@ func _on_stand_pressed() -> void:
 	stand_button.disabled = true
 
 func swap_spell():
-	test_deck.randOwnership(1,1)
-	update_card_slots_pos(node_array[nodes_added_p],player_inventory.getLastItem())#poate fi creata o functie in inventar sa dea ultima val adaugata sau alta var 
+	player_inventory.addInventory(test_deck.randOwnership(1,1))
+	player_inventory.printInventory()
+	update_card_slots_pos(node_array[nodes_added_p-1],player_inventory.getLastItem())#poate fi creata o functie in inventar sa dea ultima val adaugata sau alta var 
+	hand_score = player_inventory.calculateTotalValue()
+	player_inventory.printTotalValue()
+	test_deck.printCards(1)
+	player_score_display.text = str(hand_score)
+
 
 func _on_end_round() -> void:
 	if bust == true :
