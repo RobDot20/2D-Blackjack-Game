@@ -9,6 +9,7 @@ extends Node
 @onready var stand_button: TextureButton = $Buttons/Stand
 
 @export var test_deck := Deck.new(false)
+@export var player_inventory := CardInventory.new(test_deck, 1)
 
 signal dealer_turn
 signal end_round
@@ -111,4 +112,22 @@ func _on_end_round() -> void:
 		print("Lose :(")
 		dealer.player_lose()
 
-# Replace with function body.
+
+func _on_button_button_down() -> void:
+	if !test_deck : print("nope")
+	#else : print("worked")
+	# Mai jos se afla noua modalitate de a seta 2 carti din deck cu ownership 1 si simultan acele carti sa fie adaugate catre inventar, fara ca acesta sa necesite reconstruirea
+	player_inventory.addInventory(test_deck.randOwnership(2,player_inventory.owner))
+	test_deck.randOwnership(2,3)
+	#player_inventory.buildInventory()
+	player_inventory.printInventory()
+	#player_inventory.addInventory(test_deck.randOwnership(2,1))
+	#player_inventory.printInventory()
+	player_inventory.calculateTotalValue()
+	player_inventory.printTotalValue()
+	#player_inventory.buildInventory()
+	#player_inventory.printInventory()
+	#test_deck.printCards(1)
+	#test_deck.printCards(3)
+	test_deck.resetOwnership()
+	player_inventory.resetInventory()
