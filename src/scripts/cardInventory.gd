@@ -44,16 +44,22 @@ func removeCard(card : int):
 	inventory.erase(card)
 	deck.removeOwnership(card)
 
+# Change card nu verifica daca cartea cu care o schimba face parte din inventarul altcuiva pentru flexibilitate, verificarea ownershipului noii carti trebuie facuta de catre functia care apeleaza changeCard dinainte
 func changeCard(original : int, new : int): # Prin original si new ne referim la pozitiile cartilor in array-ul deck, pozitii ce pot fi obtinute prin comanda deck.getIndex
 	var index : int = inventory.find(original)
 	if index == -1:
 		printerr("CARD NOT PART OF INVENTORY")
 	else:
-		deck.removeOwnership(original)
+		var tmp : int = deck.deck[new].ownership
 		inventory[index] = new
-		deck.setOwnership(new, owner)
-	
-	
+		if deck.deck[new].ownership == 0:
+			deck.removeOwnership(original)
+			inventory[index] = new
+			deck.setOwnership(new, owner)
+		else: if deck.deck[original].ownership == owner: # Daca ownership-ul nu a fost deja schimbat de catre un apel changeCard de la celalalt inventar
+			deck.setOwnership(new, owner)
+			deck.setOwnership(original, tmp) # Seteaza ownershipul cartii originale = fostul ownership al noii carti
+			return original # se returneaza indexul cartii originale pentru ca apoi sa se adauge cartea originala catre celalalt inventar, daca este cazul
 
 func calculateTotalValue():
 	total_value = 0 # reset la valoare inainte de a o calcula
