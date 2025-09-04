@@ -63,15 +63,19 @@ func changeCard(original : int, new : int): # Prin original si new ne referim la
 
 func calculateTotalValue():
 	total_value = 0 # reset la valoare inainte de a o calcula
+	var ace_count : int = 0
 	for i in inventory:
-		print("INDEX IS ON: ",i)
 		total_value += deck.deck[i].value
-	calculateAceValue()
+		if deck.deck[i].number == 1:
+			ace_count += 1
+	calculateAceValue(ace_count)
 	
-func calculateAceValue():
-	for i in inventory:
-		if deck.deck[i].number == 1 && total_value > 21:
+func calculateAceValue(aces):
+	for i in aces:
+		if total_value > 21:
 			total_value -= 10
+		else:
+			break
 			
 func getTotalValue():
 	calculateTotalValue() # Astfel, pentru a da interface cu inventarul, nu trebuie sa specifici cand il recalculezi si cand nu. De asemena este sigur ca primesti cea mai actuala valoare.
