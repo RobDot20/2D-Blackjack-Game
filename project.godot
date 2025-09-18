@@ -12,5 +12,5 @@ config_version=5
 
 config/name="game_jam"
 run/main_scene="uid://c3q131yobk2av"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"

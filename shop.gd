@@ -38,11 +38,11 @@ func _on_buy_pressed():
 		print("Purchase successful! Money left:", money)
 
 		# reset toggles
-		$power1.pressed = false
-		$power2.pressed = false
-		$power3.pressed = false
+		power_1.button_pressed = false
+		power_2.button_pressed = false
+		power_3.button_pressed = false
 	else:
-		print("Not enough money! Need:", total_cost, "but only have:", money)
+		print("Not enough money! Need: ", total_cost, " but only have:", money)
 
 
 #func _ready():
