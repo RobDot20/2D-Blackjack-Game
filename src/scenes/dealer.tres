@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://t5tuvxmiivhu"]
+
+[ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="1_ogtyl"]
+[ext_resource type="Texture2D" uid="uid://bfrngdf8d2ord" path="res://assets/sprites/scene/dealer pierzator.png" id="2_apluw"]
+[ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="4_lc7he"]
+[ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="4_ogtyl"]
+[ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="5_vph2c"]
+[ext_resource type="Texture2D" uid="uid://c601c17vrgxay" path="res://assets/sprites/scene/castig.png" id="6_yqkst"]
+[ext_resource type="Texture2D" uid="uid://c3yy18l40l64a" path="res://assets/sprites/scene/reactieprins.png" id="7_og4df"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ogtyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_apluw")
+}],
+"loop": false,
+"name": &"castiga jucatorul",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lc7he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ogtyl")
+}],
+"loop": true,
+"name": &"distras",
+"speed": 0.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vph2c")
+}],
+"loop": true,
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yqkst")
+}],
+"loop": true,
+"name": &"pierde jucatorul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_og4df")
+}],
+"loop": true,
+"name": &"te prinde",
+"speed": 5.0
+}]

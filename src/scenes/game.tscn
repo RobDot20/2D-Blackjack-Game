@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://eg27lailop8k"]
+[gd_scene load_steps=23 format=3 uid="uid://eg27lailop8k"]
 
 [ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
 [ext_resource type="Texture2D" uid="uid://ej6cg1iidhoq" path="res://assets/sprites/game_area/shop.jpg" id="2_276xm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="7_6e0h8"]
 [ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="7_h2mn8"]
 [ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="8_h2mn8"]
+[ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="11_bd8mh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
 bg_color = Color(0.368627, 0.215686, 0, 0.392157)
@@ -183,7 +184,7 @@ top_level = true
 position = Vector2(80, 806)
 
 [node name="DealerStack" type="Node2D" parent="."]
-position = Vector2(757, 625)
+position = Vector2(674, 682)
 
 [node name="PlayerScore" type="VBoxContainer" parent="."]
 anchors_preset = 4
@@ -243,7 +244,11 @@ text = "Dealer Score:"
 layout_mode = 2
 
 [node name="dealer" parent="." instance=ExtResource("4_yufto")]
-position = Vector2(929, 380)
+position = Vector2(926, 409)
+
+[node name="PlayerHand" parent="." instance=ExtResource("11_bd8mh")]
+
+[node name="DealerHand" parent="." instance=ExtResource("11_bd8mh")]
 
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]

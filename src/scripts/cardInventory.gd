@@ -1,8 +1,8 @@
-extends Resource
+extends Node
 class_name CardInventory
 
 @export var inventory : Array[int]
-@export var owner : int
+@export var card_owner : int
 @export var total_value : int = 0
 @export var deck : Deck # Deck nu va fi copiat, ci referenced
 
@@ -12,7 +12,7 @@ func buildInventory():
 	inventory.clear() # Mai intai lucram cu un clean slate inainte de a il construi
 	for i in range(0, deck.deck.size()):
 		match deck.deck[i].ownership:
-			owner:
+			card_owner:
 				inventory.append(i)
 			_:
 				pass
@@ -20,11 +20,11 @@ func buildInventory():
 
 func resetInventory():
 	inventory.clear()
-	deck.resetOwnership(owner)
+	deck.resetOwnership(card_owner)
 	total_value = 0
 
 func printInventory():
-	print("Card Inventory of ", owner, " is:\n")
+	print("Card Inventory of ", card_owner, " is:\n")
 	for i in inventory:
 		deck.printCard(i)
 
@@ -37,11 +37,11 @@ func addInventory(arr): # are opt si de array si de int in functie de ce primest
 
 # Adauga un N numar de carti random
 func addRandom(n : int):
-	inventory.append_array(deck.randOwnership(n, owner))
+	inventory.append_array(deck.randOwnership(n, card_owner))
 
 func addCard(card : int):
 	inventory.append(card)
-	deck.setOwnership(card, owner)
+	deck.setOwnership(card, card_owner)
 	
 func removeCard(card : int):
 	inventory.erase(card)
@@ -54,13 +54,13 @@ func changeCard(original : int, new : int): # Prin original si new ne referim la
 	else:
 		deck.removeOwnership(original)
 		inventory[index] = new
-		deck.setOwnership(new, owner)
+		deck.setOwnership(new, card_owner)
 	
 	
 func calculateTotalValue():
 	total_value = 0 # reset la valoare inainte de a o calcula
 	for i in inventory:
-		print("INDEX IS ON: ",i)
+		#print("INDEX IS ON: ",i)
 		total_value += deck.deck[i].value
 	calculateAceValue()
 	return total_value
@@ -84,9 +84,9 @@ func getLastItem():
 	return nr
 	
 func printTotalValue():
-	print("The current total value of owner ", owner, " is: ", total_value)
+	print("The current total value of owner ", card_owner, " is: ", total_value)
 
 func _init(param_deck : Deck, param_owner : int):
 	deck = param_deck # Cum am mentionat la inceput, self.deck da point catre deck
-	owner = param_owner # Includem si owner pentru a avea un inventar de structura comuna intre player, split si dealer
+	card_owner = param_owner # Includem si owner pentru a avea un inventar de structura comuna intre player, split si dealer
 	#buildInventory() # depinzand de momentul in care se initializeaza inventarul, aceasta functie poate irosi putere computationala (daca nu exista inca carti cu ownership=owner)

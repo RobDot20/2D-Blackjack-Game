@@ -8,6 +8,10 @@ extends Node
 @onready var dealer: Node2D = $dealer
 @onready var stand_button: TextureButton = $Buttons/Stand
 
+@onready var player_hand: CardInv = $PlayerHand
+@onready var dealer_hand: CardInv = $DealerHand
+var card_pos_deck : int = 0
+
 @export var test_deck := Deck.new(2, false)
 @export var player_inventory := CardInventory.new(test_deck, 1)
 
@@ -33,12 +37,6 @@ func _ready() -> void:
 	add_slot(2,3)
 	player_score_display.text = str(hand_score)
 	dealer_score_display.text = str(dealer_score)
-	#for i in 2:
-		#var new_slot = card_slot.instantiate()
-		#card_stack.add_child(new_slot)
-		#var card_pos = test_deck.randOwnership(1,1)
-		#update_card_slots_pos(new_slot,card_pos)
-		#x_offset += x_step
 
 func add_slot(nr_rep:int,target:int):
 	match target :
@@ -68,7 +66,15 @@ func add_slot(nr_rep:int,target:int):
 				new_slot.position.x += xd_offset
 				xd_offset += x_step
 				dealer_score += test_deck.deck[card_pos].value
-	test_deck.printCards(1)
+	#test_deck.printCards(1)
+
+func add_card(target:String):
+	#func for new cardinventory
+	if target == "player" :
+		player_hand.add_card(test_deck.getCard(card_pos_deck))
+	elif target == "dealer" :
+		dealer_hand.add_card(test_deck.getCard(card_pos_deck))
+	card_pos_deck += 1
 
 func update_card_slots_pos(slot:Slot,pos:int):
 			slot.card = test_deck.deck[pos]
@@ -85,8 +91,9 @@ func update_card_slots_pos(slot:Slot,pos:int):
 func hit():
 	if hand_score < 21 :
 		add_slot(1,1)
+		add_card("player")
 		player_score_display.text = str(hand_score)
-		test_deck.printCards(1)
+		#test_deck.printCards(1)
 
 func _on_hit_pressed() -> void:
 	hit()
@@ -113,7 +120,7 @@ func swap_spell():
 	player_score_display.text = str(hand_score)
 	player_inventory.printTotalValue()
 	test_deck.printCards(1)
-	
+
 func _on_end_round() -> void:
 	if bust == true :
 		print("Lose :(")
@@ -132,14 +139,15 @@ func _on_end_round() -> void:
 
 func _on_button_button_down() -> void:
 	if !test_deck : print("nope")
+	pass
 	#else : print("worked")
-	# Mai jos se afla noua modalitate de a seta N carti din deck cu ownership 1 si simultan acele carti sa fie adaugate catre inventar, fara ca acesta sa necesite reconstruirea
-	player_inventory.addRandom(3)
-	player_inventory.printInventory() # Afisare celor 3 carti adaugate in posesia player
-	player_inventory.resetInventory() # Resetare inventar si al ownershipului cartilor respective
-	# La addCard se introduce indexul cartii din deck, ceea ce poate fi dificil de calculat de noi, asa ca introducem functia getIndex(number, face) pentru a ne usura viata
-	player_inventory.addCard(test_deck.getIndex(2,3, 2))
-	player_inventory.printInventory()
-	# Aici e un exemplu de a schimba valoarea cartii in altceva, se poate introduce si direct indexul, sau intre parantezele getIndex(player_inventory[0]) pentru a schimba prima carte a player-ului, etc
-	player_inventory.changeCard(test_deck.getIndex(2, 3, 2), test_deck.getIndex(1,1, 2))
-	player_inventory.printInventory() # Afisare schimbari dupa changeCard
+	 #Mai jos se afla noua modalitate de a seta N carti din deck cu ownership 1 si simultan acele carti sa fie adaugate catre inventar, fara ca acesta sa necesite reconstruirea
+	#player_inventory.addRandom(3)
+	#player_inventory.printInventory() # Afisare celor 3 carti adaugate in posesia player
+	#player_inventory.resetInventory() # Resetare inventar si al ownershipului cartilor respective
+	## La addCard se introduce indexul cartii din deck, ceea ce poate fi dificil de calculat de noi, asa ca introducem functia getIndex(number, face) pentru a ne usura viata
+	#player_inventory.addCard(test_deck.getIndex(2,3, 2))
+	#player_inventory.printInventory()
+	## Aici e un exemplu de a schimba valoarea cartii in altceva, se poate introduce si direct indexul, sau intre parantezele getIndex(player_inventory[0]) pentru a schimba prima carte a player-ului, etc
+	#player_inventory.changeCard(test_deck.getIndex(2, 3, 2), test_deck.getIndex(1,1, 2))
+	#player_inventory.printInventory() # Afisare schimbari dupa changeCard
