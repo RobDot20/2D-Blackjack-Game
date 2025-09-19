@@ -202,6 +202,25 @@ text = "Player score:"
 [node name="PlayerScoreDisplay" type="Label" parent="PlayerScore"]
 layout_mode = 2
 
+[node name="DealerScore" type="VBoxContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="DealerScoreText" type="Label" parent="DealerScore"]
+layout_mode = 2
+text = "Dealer Score:"
+
+[node name="DealerScoreDisplay" type="Label" parent="DealerScore"]
+layout_mode = 2
+
 [node name="Buttons" type="HBoxContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -223,25 +242,6 @@ texture_pressed = ExtResource("7_6e0h8")
 layout_mode = 2
 texture_normal = ExtResource("7_h2mn8")
 texture_pressed = ExtResource("8_h2mn8")
-
-[node name="DealerScore" type="VBoxContainer" parent="."]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="DealerScoreText" type="Label" parent="DealerScore"]
-layout_mode = 2
-text = "Dealer Score:"
-
-[node name="DealerScoreDisplay" type="Label" parent="DealerScore"]
-layout_mode = 2
 
 [node name="dealer" parent="." instance=ExtResource("4_yufto")]
 position = Vector2(926, 409)

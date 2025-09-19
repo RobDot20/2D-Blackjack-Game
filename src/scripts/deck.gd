@@ -3,10 +3,6 @@ class_name Deck
 
 @export var deck: Array[PlayingCard]
 @export var sets : int = 1
-# Functie care initializeaza deck-ul de carti, se apeleaza cu Deck.new()
-
-#@onready var hearts_texture = preload("res://assets/cards/Hearts/")
-#pt preload la foldere am salvat o postare
 
 func _init(param_sets, add_joker : bool) :
 	sets = param_sets
@@ -29,6 +25,9 @@ func _init(param_sets, add_joker : bool) :
 						else:
 							new_card.value = 10
 						new_card.suit = i
+						var suit = PlayingCard.Suit.find_key(i)
+						#new_card.texture = load(dir_contents(suit,new_card.number))
+						new_card.texture = load("res://assets/cards/" + str(suit) + "/" + str(new_card.number) + ".png")
 						new_card.ownership = 0 # by default cardul nu este detinut de nimeni
 						deck.append(new_card)
 	# Jokerii nu au culoar sau valoare deoarece ne gandim ce (si daca) rol vor avea
@@ -108,6 +107,26 @@ func printCards(card_owner : int):
 		if deck[i].ownership == card_owner:
 			printCard(i)
 			#print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
+
+func dir_contents(suit,num):
+	#parcurge folderul de carti dorit si returneaza path-ul catre poza dorita
+	var path = "res://assets/cards/" + suit
+	print(path)
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				#print("Found file: " + file_name)
+				if file_name == str(num) + ".png" :
+					print("res://assets/cards/" + suit + "/" + file_name)
+					return "res://assets/cards/" + suit + "/" + file_name
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
 
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT

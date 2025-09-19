@@ -78,7 +78,7 @@ func add_card(target:String):
 
 func update_card_slots_pos(slot:Slot,pos:int):
 			slot.card = test_deck.deck[pos]
-			slot.change_card()
+			#slot.change_card()
 
 #func update_card_slots(target:int,slot:Slot):
 	#for i in range (0,test_deck.deck.size()):

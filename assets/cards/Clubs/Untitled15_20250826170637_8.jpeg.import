@@ -3,21 +3,23 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://na8u03hi67ms"
-path="res://.godot/imported/Untitled15_20250826170637_8.jpeg-567b41c6653d83a1fd9de754d1bf1bb8.ctex"
+path="res://.godot/imported/Untitled15_20250826170637_8.jpeg-abc1095874821abf3fd7ba7952b92292.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/Clubs/Untitled15_20250826170637_8.jpeg"
-dest_files=["res://.godot/imported/Untitled15_20250826170637_8.jpeg-567b41c6653d83a1fd9de754d1bf1bb8.ctex"]
+source_file="res://assets/cards/CLUBS/Untitled15_20250826170637_8.jpeg"
+dest_files=["res://.godot/imported/Untitled15_20250826170637_8.jpeg-abc1095874821abf3fd7ba7952b92292.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0khibcvvxfwj"]
+[gd_scene load_steps=2 format=3 uid="uid://c0khibcvvxfwj"]
 
-[ext_resource type="SpriteFrames" uid="uid://chhryb7hem1v5" path="res://src/scenes/new_sprite_frames.tres" id="1_tcgpo"]
 [ext_resource type="Script" uid="uid://copiqnunkfpxy" path="res://src/scripts/card_slot.gd" id="1_tmy3c"]
 
 [node name="CardSlot" type="Node2D"]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_tmy3c")
 
-[node name="CardFrames" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_tcgpo")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

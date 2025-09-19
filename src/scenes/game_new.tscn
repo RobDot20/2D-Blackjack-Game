@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxyempt167cpj"]
+
+[ext_resource type="Script" uid="uid://dhfeqwcarkcup" path="res://src/scripts/game_new.gd" id="1_jjama"]
+[ext_resource type="Texture2D" uid="uid://bh2wtcp3o6wy8" path="res://assets/sprites/game_area/buton_hit.png" id="2_xkljl"]
+[ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="3_5kmjw"]
+[ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="4_66ddt"]
+[ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="5_sw7tb"]
+[ext_resource type="PackedScene" uid="uid://6kq86axekhxe" path="res://src/scenes/dealer.tscn" id="6_s7xhp"]
+[ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="7_q62qk"]
+
+[node name="GameNew" type="Node"]
+script = ExtResource("1_jjama")
+
+[node name="PlayerHand" parent="." instance=ExtResource("7_q62qk")]
+position = Vector2(172, 803)
+
+[node name="DealerHand" parent="." instance=ExtResource("7_q62qk")]
+position = Vector2(785, 643)
+
+[node name="dealer" parent="." instance=ExtResource("6_s7xhp")]
+position = Vector2(939, 411)
+
+[node name="PlayerScore" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 99.0
+offset_bottom = 25.0
+grow_vertical = 2
+
+[node name="ScoreText" type="Label" parent="PlayerScore"]
+layout_mode = 2
+text = "Player score:"
+
+[node name="PlayerScoreDisplay" type="Label" parent="PlayerScore"]
+layout_mode = 2
+
+[node name="DealerScore" type="VBoxContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="DealerScoreText" type="Label" parent="DealerScore"]
+layout_mode = 2
+text = "Dealer Score:"
+
+[node name="DealerScoreDisplay" type="Label" parent="DealerScore"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = -251.0
+offset_right = 502.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Hit" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("2_xkljl")
+texture_pressed = ExtResource("3_5kmjw")
+
+[node name="Stand" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("4_66ddt")
+texture_pressed = ExtResource("5_sw7tb")
+
+[connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
+[connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="pressed" from="Buttons/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="Buttons/Stand" to="." method="_on_stand_pressed"]

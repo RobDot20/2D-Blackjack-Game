@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crgbnmkinkecp" path="res://assets/sprites/scene/dealer alert.png" id="2_r7u6n"]
 [ext_resource type="Texture2D" uid="uid://bfrngdf8d2ord" path="res://assets/sprites/scene/dealer pierzator.png" id="3_yjs24"]
 [ext_resource type="Texture2D" uid="uid://b0wtuplqks36t" path="res://assets/sprites/scene/dealer stanga.png" id="4_jjs13"]
-[ext_resource type="Texture2D" uid="uid://dscj18dk6yl7j" path="res://assets/sprites/scene/dealerdreapta_remake.png" id="5_nf4ml"]
+[ext_resource type="Texture2D" uid="uid://bo4yuyu8dvqa7" path="res://assets/sprites/scene/dealer(dreapta) remake.png" id="5_nf4ml"]
 [ext_resource type="Texture2D" uid="uid://dvyfkb3o8icao" path="res://assets/sprites/scene/dealer png remake 2.png" id="6_676hj"]
 [ext_resource type="Texture2D" uid="uid://c601c17vrgxay" path="res://assets/sprites/scene/castig.png" id="7_l0u8g"]
 [ext_resource type="Texture2D" uid="uid://c3yy18l40l64a" path="res://assets/sprites/scene/reactieprins.png" id="8_5ce41"]

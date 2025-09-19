@@ -1,27 +1,36 @@
-extends Node
+extends Node2D
 
 class_name CardInv
 
 @onready var h_box_container: HBoxContainer = $HBoxContainer
+@onready var card_scene = preload("res://src/scenes/card_slot.tscn")
 
 @export var inventory : Array[PlayingCard]
+
 var value : int = 0
-var ace_pos : int = -1
-var nr_pos_carte : int = 0 
+var ace_in_pos : int = -1
+var nr_pos_carte : int = 0
+var x_offset = 0.0
+var x_step = 150
+
 func _init() -> void:
 	pass
 	#inventory.resize(11) 
 
 func calc_value():
+	value = 0
 	for i in range(inventory.size()):
 		if inventory[i].number == 1 :
-			ace_pos = i
+			ace_in_pos = i
 		value += inventory[i].value
-	if value > 21 and ace_pos != -1 :
-		inventory[ace_pos].value = 1
+	if value > 21 and ace_in_pos != -1 :
+		inventory[ace_in_pos].value = 1
 	return value
 
-func add_card(card):
+func add_card(card:PlayingCard):
 	inventory.append(card)
-	var texture_box = h_box_container.get_child(nr_pos_carte)
-	print(texture_box)
+	var new_slot : Slot = card_scene.instantiate()
+	add_child(new_slot)
+	new_slot.change_card(card)
+	new_slot.position.x += x_offset
+	x_offset += x_step
