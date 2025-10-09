@@ -77,7 +77,18 @@ layout_mode = 2
 texture_normal = ExtResource("4_66ddt")
 texture_pressed = ExtResource("5_sw7tb")
 
+[node name="Restart" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Restart
+"
+
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
 [connection signal="pressed" from="Buttons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Buttons/Stand" to="." method="_on_stand_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

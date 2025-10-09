@@ -4,3 +4,7 @@
 
 [node name="CardInventory" type="Node2D"]
 script = ExtResource("1_cc53b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
