@@ -115,7 +115,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI"]
+[node name="SpellButtons" type="HBoxContainer" parent="Player UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.649306
@@ -128,11 +128,11 @@ grow_vertical = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Spell 1" type="Button" parent="Player UI/HBoxContainer"]
+[node name="Spell 1" type="Button" parent="Player UI/SpellButtons"]
 layout_mode = 2
 text = "Spell 1"
 
-[node name="Spell 2" type="Button" parent="Player UI/HBoxContainer"]
+[node name="Spell 2" type="Button" parent="Player UI/SpellButtons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Spell 2"

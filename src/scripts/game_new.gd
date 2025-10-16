@@ -75,6 +75,5 @@ func _on_end_round() -> void:
 		print("Lose :(")
 		dealer.player_lose()
 
-
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
