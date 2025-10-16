@@ -4,9 +4,10 @@ extends Node
 @onready var dealer_hand: CardInv = $DealerHand
 @onready var dealer: Node2D = $dealer
 
-@onready var player_score_display: Label = $PlayerScore/PlayerScoreDisplay
-@onready var dealer_score_display: Label = $DealerScore/DealerScoreDisplay
-@onready var stand_button: TextureButton = $Buttons/Stand
+@onready var player_score_display: Label = $"Player UI/PlayerScore/PlayerScoreDisplay"
+@onready var dealer_score_display: Label = $"Player UI/DealerScore/DealerScoreDisplay"
+@onready var hit_button: TextureButton = $"Player UI/Buttons/Hit"
+@onready var stand_button: TextureButton = $"Player UI/Buttons/Stand"
 
 var card_pos_deck : int = 0
 
@@ -48,9 +49,10 @@ func _on_hit_pressed() -> void:
 
 func _on_stand_pressed() -> void:
 	emit_signal("dealer_turn")
-	stand_button.disabled = true
 
 func _on_dealer_turn() -> void:
+	hit_button.disabled = true
+	stand_button.disabled = true
 	while dealer_score < 17 :
 		await get_tree().create_timer(0.75).timeout
 		add_card("dealer")
