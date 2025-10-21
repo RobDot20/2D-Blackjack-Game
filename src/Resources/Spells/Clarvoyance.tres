@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://c63paucdj0sh0"]
+
+[ext_resource type="Script" uid="uid://cg0ncb5ddt37c" path="res://src/scripts/spell.gd" id="1_1ncpx"]
+
+[resource]
+script = ExtResource("1_1ncpx")
+spell_name = "clarvoyance"
+metadata/_custom_type_script = "uid://cg0ncb5ddt37c"

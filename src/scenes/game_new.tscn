@@ -1,8 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxyempt167cpj"]
+[gd_scene load_steps=24 format=3 uid="uid://cxyempt167cpj"]
 
 [ext_resource type="Script" uid="uid://dhfeqwcarkcup" path="res://src/scripts/game_new.gd" id="1_jjama"]
+[ext_resource type="Script" uid="uid://b633ycjypxmly" path="res://src/scripts/card_handler.gd" id="2_66ddt"]
+[ext_resource type="Resource" uid="uid://c63paucdj0sh0" path="res://src/Resources/Spells/Clarvoyance.tres" id="2_sw7tb"]
 [ext_resource type="Texture2D" uid="uid://bh2wtcp3o6wy8" path="res://assets/sprites/game_area/buton_hit.png" id="2_xkljl"]
 [ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="3_5kmjw"]
+[ext_resource type="Resource" uid="uid://dgex78laqhsch" path="res://src/Resources/Spells/Swap.tres" id="3_s7xhp"]
 [ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="4_66ddt"]
 [ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="5_sw7tb"]
 [ext_resource type="PackedScene" uid="uid://6kq86axekhxe" path="res://src/scenes/dealer.tscn" id="6_s7xhp"]
@@ -86,11 +89,22 @@ animations = [{
 
 [node name="GameNew" type="Node"]
 script = ExtResource("1_jjama")
+spell_1 = ExtResource("2_sw7tb")
+spell_2 = ExtResource("3_s7xhp")
 
-[node name="PlayerHand" parent="." instance=ExtResource("7_q62qk")]
+[node name="CardHandler" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_66ddt")
+
+[node name="PlayerHand" parent="CardHandler" instance=ExtResource("7_q62qk")]
 position = Vector2(172, 803)
 
-[node name="DealerHand" parent="." instance=ExtResource("7_q62qk")]
+[node name="DealerHand" parent="CardHandler" instance=ExtResource("7_q62qk")]
 position = Vector2(785, 643)
 
 [node name="dealer" parent="." instance=ExtResource("6_s7xhp")]
@@ -238,6 +252,8 @@ text = "Restart
 
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Stand" to="." method="_on_stand_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

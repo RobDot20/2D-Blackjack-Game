@@ -1,13 +1,15 @@
 extends Node
 
-@onready var player_hand: CardInv = $PlayerHand
-@onready var dealer_hand: CardInv = $DealerHand
+
 @onready var dealer: Node2D = $dealer
 
 @onready var player_score_display: Label = $"Player UI/PlayerScore/PlayerScoreDisplay"
 @onready var dealer_score_display: Label = $"Player UI/DealerScore/DealerScoreDisplay"
 @onready var hit_button: TextureButton = $"Player UI/Buttons/Hit"
 @onready var stand_button: TextureButton = $"Player UI/Buttons/Stand"
+@onready var card_handler: Control = $CardHandler
+@onready var player_hand: CardInv = $CardHandler/PlayerHand
+@onready var dealer_hand: CardInv = $CardHandler/DealerHand
 
 var card_pos_deck : int = 0
 
@@ -15,18 +17,14 @@ var player_score : int
 var dealer_score : int
 var bust : bool = false
 
+@export var spell_1 : Spell
+@export var spell_2 : Spell
+
 signal dealer_turn
 signal end_round
 
-@export var play_deck := Deck.new(2, false)
-
 func add_card(target:String):
-	#func for new cardinventory
-	if target == "player" :
-		player_hand.add_card(play_deck.getCard(card_pos_deck))
-	elif target == "dealer" :
-		dealer_hand.add_card(play_deck.getCard(card_pos_deck))
-	card_pos_deck += 1
+	card_handler.add_card(target)
 
 func update_score(target):
 	if target == "player" :
@@ -53,7 +51,7 @@ func _on_stand_pressed() -> void:
 func _on_dealer_turn() -> void:
 	hit_button.disabled = true
 	stand_button.disabled = true
-	while dealer_score < 17 :
+	while dealer_score <= 16 :
 		await get_tree().create_timer(0.75).timeout
 		add_card("dealer")
 		update_score("dealer")
@@ -77,3 +75,9 @@ func _on_end_round() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+
+func _on_spell_1_pressed() -> void:
+	card_handler.use_spell(spell_1.spell_name)
+
+func _on_spell_2_pressed() -> void:
+	card_handler.use_spell(spell_2.spell_name)

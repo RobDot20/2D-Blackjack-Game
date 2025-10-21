@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://dgex78laqhsch"]
+
+[ext_resource type="Script" uid="uid://cg0ncb5ddt37c" path="res://src/scripts/spell.gd" id="1_g7hk5"]
+
+[resource]
+script = ExtResource("1_g7hk5")
+spell_name = "swap"
+metadata/_custom_type_script = "uid://cg0ncb5ddt37c"
