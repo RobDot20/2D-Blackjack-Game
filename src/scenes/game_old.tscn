@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://eg27lailop8k"]
 
-[ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game.gd" id="1_covw0"]
+[ext_resource type="Script" uid="uid://djw3441vgckj6" path="res://src/scripts/game_old.gd" id="1_covw0"]
 [ext_resource type="Texture2D" uid="uid://ej6cg1iidhoq" path="res://assets/sprites/game_area/shop.jpg" id="2_276xm"]
 [ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/sprites/game_area/masa_png.png" id="2_lepm3"]
 [ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="4_lcg6w"]

@@ -14,7 +14,7 @@ func add_card(target:String):
 		dealer_hand.add_card(play_deck.getCard(card_pos_deck))
 	card_pos_deck += 1
 
-func use_spell(spell:String,_target):
+func use_spell(spell:String,_target = 0):
 	print("use spell called")
 	match spell:
 		"swap":

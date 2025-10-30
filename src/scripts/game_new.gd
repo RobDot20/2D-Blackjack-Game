@@ -81,3 +81,6 @@ func _on_spell_1_pressed() -> void:
 
 func _on_spell_2_pressed() -> void:
 	card_handler.use_spell(spell_2.spell_name)
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

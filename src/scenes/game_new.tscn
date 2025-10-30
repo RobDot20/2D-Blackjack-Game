@@ -239,16 +239,23 @@ layout_mode = 2
 texture_normal = ExtResource("4_66ddt")
 texture_pressed = ExtResource("5_sw7tb")
 
-[node name="Restart" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -32.5
 offset_right = 32.5
-offset_bottom = 31.0
+offset_bottom = 40.0
 grow_horizontal = 2
+
+[node name="Restart" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 text = "Restart
 "
+
+[node name="Exit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Exit"
 
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
@@ -256,4 +263,5 @@ text = "Restart
 [connection signal="pressed" from="Player UI/SpellButtons/Spell 2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Stand" to="." method="_on_stand_pressed"]
-[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]
