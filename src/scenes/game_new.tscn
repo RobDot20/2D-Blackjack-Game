@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxyempt167cpj"]
+[gd_scene load_steps=26 format=3 uid="uid://cxyempt167cpj"]
 
 [ext_resource type="Script" uid="uid://dhfeqwcarkcup" path="res://src/scripts/game_new.gd" id="1_jjama"]
 [ext_resource type="Script" uid="uid://b633ycjypxmly" path="res://src/scripts/card_handler.gd" id="2_66ddt"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="7_q62qk"]
 [ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="8_5kmjw"]
 [ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="9_66ddt"]
+[ext_resource type="PackedScene" uid="uid://cyq47epxoe7aj" path="res://src/scenes/win_screen.tscn" id="13_q62qk"]
+[ext_resource type="PackedScene" uid="uid://cltr2olsu4bwt" path="res://src/scenes/lose_screen.tscn" id="14_jv1k7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
 bg_color = Color(0.368627, 0.215686, 0, 0.392157)
@@ -140,7 +142,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Spell 2"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Player UI"]
+[node name="Score" type="HBoxContainer" parent="Player UI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -149,12 +151,12 @@ offset_left = -101.0
 offset_bottom = 46.0
 grow_horizontal = 0
 
-[node name="Panel" type="Panel" parent="Player UI/HBoxContainer2"]
+[node name="Panel" type="Panel" parent="Player UI/Score"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yeqyw")
 
-[node name="Label" type="Label" parent="Player UI/HBoxContainer2/Panel"]
+[node name="Label" type="Label" parent="Player UI/Score/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.415842
@@ -173,7 +175,7 @@ horizontal_alignment = 2
 script = ExtResource("8_5kmjw")
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/HBoxContainer2/Panel"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/Score/Panel"]
 position = Vector2(17, 21)
 sprite_frames = SubResource("SpriteFrames_88rra")
 animation = &"new_animation"
@@ -239,29 +241,45 @@ layout_mode = 2
 texture_normal = ExtResource("4_66ddt")
 texture_pressed = ExtResource("5_sw7tb")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -32.5
-offset_right = 32.5
+offset_left = -53.0
+offset_right = 53.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Restart" type="Button" parent="HBoxContainer"]
+[node name="Restart" type="Button" parent="Player UI/HBoxContainer"]
 layout_mode = 2
 text = "Restart
 "
 
-[node name="Exit" type="Button" parent="HBoxContainer"]
+[node name="Exit" type="Button" parent="Player UI/HBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
+[node name="End Screens" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Win Screen" parent="End Screens" instance=ExtResource("13_q62qk")]
+layer = -1
+visible = false
+
+[node name="Lose Screen" parent="End Screens" instance=ExtResource("14_jv1k7")]
+layer = -1
+visible = false
+
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="player_prins" from="dealer" to="." method="_on_dealer_player_prins"]
 [connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Player UI/SpellButtons/Spell 2" to="." method="_on_spell_2_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Hit" to="." method="_on_hit_pressed"]
 [connection signal="pressed" from="Player UI/Buttons/Stand" to="." method="_on_stand_pressed"]
-[connection signal="pressed" from="HBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

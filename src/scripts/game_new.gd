@@ -11,6 +11,9 @@ extends Node
 @onready var player_hand: CardInv = $CardHandler/PlayerHand
 @onready var dealer_hand: CardInv = $CardHandler/DealerHand
 
+@onready var win_screen: CanvasLayer = $"End Screens/Win Screen"
+@onready var lose_screen: CanvasLayer = $"End Screens/Lose Screen"
+
 var card_pos_deck : int = 0
 
 var player_score : int
@@ -39,6 +42,20 @@ func hit():
 		add_card("player")
 		update_score("player")
 
+func win():
+	print("Win!")
+	dealer.player_win()
+	await get_tree().create_timer(3.5).timeout
+	win_screen.visible = true
+	win_screen.layer = 2
+
+func lose():
+	print("Lose :(")
+	dealer.player_lose()
+	await get_tree().create_timer(2).timeout
+	lose_screen.visible = true
+	lose_screen.layer = 2
+
 func _on_hit_pressed() -> void:
 	hit()
 	if player_score > 21 :
@@ -59,19 +76,15 @@ func _on_dealer_turn() -> void:
 
 func _on_end_round() -> void:
 	if bust == true :
-		print("Lose :(")
-		dealer.player_lose()
+		lose()
 	elif dealer_score > 21 :
-		print("Win!")
-		dealer.player_win()
+		win()
 	elif 21 - dealer_score > 21 - player_score :
-		print("Win!")
-		dealer.player_win()
+		win()
 	elif dealer_score == player_score : 
 		print("Draw :|")
 	else : 
-		print("Lose :(")
-		dealer.player_lose()
+		lose()
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
@@ -84,3 +97,6 @@ func _on_spell_2_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_dealer_player_prins() -> void:
+	lose()
