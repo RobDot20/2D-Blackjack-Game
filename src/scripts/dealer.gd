@@ -3,6 +3,8 @@ extends Node2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine = $Statemachine
 
+signal player_prins
+
 func _ready():
 	state_machine.state_changed.connect(_on_state_changed)
 	_on_state_changed(state_machine.current_state)
@@ -23,13 +25,16 @@ func player_win():
 	state_machine.set_state(state_machine.State.suparat)
 func player_lose():
 	state_machine.set_state(state_machine.State.fericit)
+	
 func player_draw():
 	state_machine.set_state(state_machine.State.nervos)
 
 func _on_spell_2_pressed():
 	if state_machine.current_state==state_machine.State.front:
 		state_machine.set_state(state_machine.State.nervos)
+		emit_signal("player_prins")
 
 func _on_spell_1_pressed():
 	if state_machine.current_state==state_machine.State.front:
 		state_machine.set_state(state_machine.State.nervos)
+		emit_signal("player_prins")
