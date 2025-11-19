@@ -56,6 +56,13 @@ func lose():
 	lose_screen.visible = true
 	lose_screen.layer = 2
 
+func busted():
+	print("Busted")
+	#dealer.player_lose()
+	await get_tree().create_timer(2).timeout
+	lose_screen.visible = true
+	lose_screen.layer = 2
+
 func _on_hit_pressed() -> void:
 	hit()
 	if player_score > 21 :
@@ -99,4 +106,4 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_dealer_player_prins() -> void:
-	lose()
+	busted()
