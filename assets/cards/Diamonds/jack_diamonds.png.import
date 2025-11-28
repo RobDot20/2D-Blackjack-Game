@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coj3ltaxjvj81"
-path="res://.godot/imported/stand.png-74c95e48d205e26ba77f8b3e40be1d0a.ctex"
+uid="uid://ww0tss23qel5"
+path="res://.godot/imported/jack_diamonds.png-921d87fc3488327edd3de4782b323ece.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/game_area/stand.png"
-dest_files=["res://.godot/imported/stand.png-74c95e48d205e26ba77f8b3e40be1d0a.ctex"]
+source_file="res://assets/cards/Diamonds/jack_diamonds.png"
+dest_files=["res://.godot/imported/jack_diamonds.png-921d87fc3488327edd3de4782b323ece.ctex"]
 
 [params]
 

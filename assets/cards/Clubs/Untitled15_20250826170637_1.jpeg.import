@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coj3ltaxjvj81"
-path="res://.godot/imported/stand.png-74c95e48d205e26ba77f8b3e40be1d0a.ctex"
+uid="uid://co480gh53vf68"
+path="res://.godot/imported/Untitled15_20250826170637_1.jpeg-15cfe98b4be5c52ac3a6335d4557e8f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/game_area/stand.png"
-dest_files=["res://.godot/imported/stand.png-74c95e48d205e26ba77f8b3e40be1d0a.ctex"]
+source_file="res://assets/cards/Clubs/Untitled15_20250826170637_1.jpeg"
+dest_files=["res://.godot/imported/Untitled15_20250826170637_1.jpeg-15cfe98b4be5c52ac3a6335d4557e8f6.ctex"]
 
 [params]
 
