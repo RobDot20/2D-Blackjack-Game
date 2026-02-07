@@ -2,6 +2,7 @@ extends Control
 
 @onready var player_hand: CardInv = $PlayerHand
 @onready var dealer_hand: CardInv = $DealerHand
+@onready var clarvoyance_slot: CardInv = $ClarvoyanceSlot
 
 @export var play_deck := Deck.new(2, false)
 
@@ -22,6 +23,7 @@ func use_spell(spell:String,_target = 0):
 		"clarvoyance":
 			var next = next_card()
 			print(next)
+			clarvoyance_slot.add_card(play_deck.getCard(card_pos_deck)                                                                                                                                                                                                                    )
 
 func next_card():
 	return(play_deck.getCard(card_pos_deck).number)

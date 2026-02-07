@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cxyempt167cpj"]
+[gd_scene format=3 uid="uid://cxyempt167cpj"]
 
 [ext_resource type="Script" uid="uid://dhfeqwcarkcup" path="res://src/scripts/game_new.gd" id="1_jjama"]
 [ext_resource type="Script" uid="uid://b633ycjypxmly" path="res://src/scripts/card_handler.gd" id="2_66ddt"]
@@ -17,6 +17,8 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
 bg_color = Color(0.368627, 0.215686, 0, 0.392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jv1k7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5amjh"]
 atlas = ExtResource("9_66ddt")
@@ -89,12 +91,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GameNew" type="Node"]
+[node name="GameNew" type="Node" unique_id=182881983]
 script = ExtResource("1_jjama")
 spell_1 = ExtResource("2_sw7tb")
 spell_2 = ExtResource("3_s7xhp")
 
-[node name="CardHandler" type="Control" parent="."]
+[node name="CardHandler" type="Control" parent="." unique_id=731202902]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,16 +105,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_66ddt")
 
-[node name="PlayerHand" parent="CardHandler" instance=ExtResource("7_q62qk")]
+[node name="PlayerHand" parent="CardHandler" unique_id=1684568506 instance=ExtResource("7_q62qk")]
 position = Vector2(172, 803)
 
-[node name="DealerHand" parent="CardHandler" instance=ExtResource("7_q62qk")]
+[node name="DealerHand" parent="CardHandler" unique_id=1157201797 instance=ExtResource("7_q62qk")]
 position = Vector2(785, 643)
 
-[node name="dealer" parent="." instance=ExtResource("6_s7xhp")]
+[node name="ClarvoyanceSlot" parent="CardHandler" unique_id=1937847011 instance=ExtResource("7_q62qk")]
+position = Vector2(1528, 872)
+
+[node name="dealer" parent="." unique_id=614687088 instance=ExtResource("6_s7xhp")]
 position = Vector2(939, 411)
 
-[node name="Player UI" type="Control" parent="."]
+[node name="Player UI" type="Control" parent="." unique_id=1969924758]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +125,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpellButtons" type="HBoxContainer" parent="Player UI"]
+[node name="SpellButtons" type="HBoxContainer" parent="Player UI" unique_id=1387006467]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.649306
@@ -133,16 +138,16 @@ grow_vertical = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Spell 1" type="Button" parent="Player UI/SpellButtons"]
+[node name="Spell 1" type="Button" parent="Player UI/SpellButtons" unique_id=1714913294]
 layout_mode = 2
 text = "Spell 1"
 
-[node name="Spell 2" type="Button" parent="Player UI/SpellButtons"]
+[node name="Spell 2" type="Button" parent="Player UI/SpellButtons" unique_id=23511144]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Spell 2"
 
-[node name="Score" type="HBoxContainer" parent="Player UI"]
+[node name="Score" type="HBoxContainer" parent="Player UI" unique_id=88919766]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -151,37 +156,41 @@ offset_left = -101.0
 offset_bottom = 46.0
 grow_horizontal = 0
 
-[node name="Panel" type="Panel" parent="Player UI/Score"]
+[node name="Panel" type="Panel" parent="Player UI/Score" unique_id=716666331]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yeqyw")
 
-[node name="Label" type="Label" parent="Player UI/Score/Panel"]
+[node name="Label" type="Label" parent="Player UI/Score/Panel" unique_id=1333921081]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.415842
-anchor_top = 0.195652
-anchor_right = 0.692901
-anchor_bottom = 0.728
-offset_right = 0.0169983
-offset_bottom = 24.512
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -12.999998
+offset_right = 14.5
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5319833, 0.9961418)
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "100
 "
-horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_jv1k7")
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("8_5kmjw")
-metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/Score/Panel"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/Score/Panel" unique_id=1743408624]
 position = Vector2(17, 21)
 sprite_frames = SubResource("SpriteFrames_88rra")
 animation = &"new_animation"
 frame_progress = 0.488634
 
-[node name="PlayerScore" type="VBoxContainer" parent="Player UI"]
+[node name="PlayerScore" type="VBoxContainer" parent="Player UI" unique_id=2011153580]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -191,14 +200,14 @@ offset_right = 99.0
 offset_bottom = 25.0
 grow_vertical = 2
 
-[node name="ScoreText" type="Label" parent="Player UI/PlayerScore"]
+[node name="ScoreText" type="Label" parent="Player UI/PlayerScore" unique_id=1303556418]
 layout_mode = 2
 text = "Player score:"
 
-[node name="PlayerScoreDisplay" type="Label" parent="Player UI/PlayerScore"]
+[node name="PlayerScoreDisplay" type="Label" parent="Player UI/PlayerScore" unique_id=1787279116]
 layout_mode = 2
 
-[node name="DealerScore" type="VBoxContainer" parent="Player UI"]
+[node name="DealerScore" type="VBoxContainer" parent="Player UI" unique_id=1534786652]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -211,14 +220,14 @@ offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="DealerScoreText" type="Label" parent="Player UI/DealerScore"]
+[node name="DealerScoreText" type="Label" parent="Player UI/DealerScore" unique_id=1300102010]
 layout_mode = 2
 text = "Dealer Score:"
 
-[node name="DealerScoreDisplay" type="Label" parent="Player UI/DealerScore"]
+[node name="DealerScoreDisplay" type="Label" parent="Player UI/DealerScore" unique_id=1956070320]
 layout_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="Player UI"]
+[node name="Buttons" type="HBoxContainer" parent="Player UI" unique_id=349994190]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -231,17 +240,17 @@ offset_right = 502.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Hit" type="TextureButton" parent="Player UI/Buttons"]
+[node name="Hit" type="TextureButton" parent="Player UI/Buttons" unique_id=304827575]
 layout_mode = 2
 texture_normal = ExtResource("2_xkljl")
 texture_pressed = ExtResource("3_5kmjw")
 
-[node name="Stand" type="TextureButton" parent="Player UI/Buttons"]
+[node name="Stand" type="TextureButton" parent="Player UI/Buttons" unique_id=1441917390]
 layout_mode = 2
 texture_normal = ExtResource("4_66ddt")
 texture_pressed = ExtResource("5_sw7tb")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI" unique_id=1655286730]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -251,26 +260,26 @@ offset_right = 53.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Restart" type="Button" parent="Player UI/HBoxContainer"]
+[node name="Restart" type="Button" parent="Player UI/HBoxContainer" unique_id=1669739970]
 layout_mode = 2
 text = "Restart
 "
 
-[node name="Exit" type="Button" parent="Player UI/HBoxContainer"]
+[node name="Exit" type="Button" parent="Player UI/HBoxContainer" unique_id=1157108037]
 layout_mode = 2
 text = "Exit"
 
-[node name="End Screens" type="Control" parent="."]
+[node name="End Screens" type="Control" parent="." unique_id=49078963]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Win Screen" parent="End Screens" instance=ExtResource("13_q62qk")]
+[node name="Win Screen" parent="End Screens" unique_id=1751893349 instance=ExtResource("13_q62qk")]
 layer = -1
 visible = false
 
-[node name="Lose Screen" parent="End Screens" instance=ExtResource("14_jv1k7")]
+[node name="Lose Screen" parent="End Screens" unique_id=158097282 instance=ExtResource("14_jv1k7")]
 layer = -1
 visible = false
 
