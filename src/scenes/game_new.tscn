@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="7_q62qk"]
 [ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="8_5kmjw"]
 [ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="9_66ddt"]
+[ext_resource type="Script" uid="uid://cxxeuxb160y33" path="res://src/scripts/spell_button.gd" id="9_c0xo3"]
 [ext_resource type="PackedScene" uid="uid://cyq47epxoe7aj" path="res://src/scenes/win_screen.tscn" id="13_q62qk"]
 [ext_resource type="PackedScene" uid="uid://cltr2olsu4bwt" path="res://src/scenes/lose_screen.tscn" id="14_jv1k7"]
 
@@ -95,8 +96,6 @@ animations = [{
 
 [node name="GameNew" type="Node" unique_id=182881983]
 script = ExtResource("1_jjama")
-spell_1 = ExtResource("2_sw7tb")
-spell_2 = ExtResource("3_s7xhp")
 
 [node name="Background" type="Control" parent="." unique_id=2135272910]
 layout_mode = 3
@@ -191,11 +190,15 @@ metadata/_edit_use_anchors_ = true
 [node name="Spell 1" type="Button" parent="Player UI/SpellButtons" unique_id=1714913294]
 layout_mode = 2
 text = "Spell 1"
+script = ExtResource("9_c0xo3")
+spell = ExtResource("2_sw7tb")
 
 [node name="Spell 2" type="Button" parent="Player UI/SpellButtons" unique_id=23511144]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Spell 2"
+script = ExtResource("9_c0xo3")
+spell = ExtResource("3_s7xhp")
 
 [node name="Score" type="HBoxContainer" parent="Player UI" unique_id=88919766]
 layout_mode = 1

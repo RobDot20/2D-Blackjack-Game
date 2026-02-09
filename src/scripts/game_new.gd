@@ -20,8 +20,11 @@ var player_score : int
 var dealer_score : int
 var bust : bool = false
 
-@export var spell_1 : Spell
-@export var spell_2 : Spell
+#@export var spell_1 : Spell
+#@export var spell_2 : Spell
+@onready var spell_1: SpellButton = $"Player UI/SpellButtons/Spell 1"
+@onready var spell_2: SpellButton = $"Player UI/SpellButtons/Spell 2"
+
 
 signal dealer_turn
 signal end_round
@@ -76,6 +79,11 @@ func busted():
 	lose_screen.visible = true
 	lose_screen.layer = 2
 
+
+#func update_spell(new_spell : Spell):
+	#
+
+
 func _on_hit_pressed() -> void:
 	hit()
 
@@ -107,10 +115,10 @@ func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_spell_1_pressed() -> void:
-	card_handler.use_spell(spell_1.spell_name)
+	card_handler.use_spell(spell_1.getSpellName())
 
 func _on_spell_2_pressed() -> void:
-	card_handler.use_spell(spell_2.spell_name)
+	card_handler.use_spell(spell_2.getSpellName())
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
