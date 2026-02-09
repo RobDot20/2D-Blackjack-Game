@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="3_5kmjw"]
 [ext_resource type="Resource" uid="uid://dgex78laqhsch" path="res://src/Resources/Spells/Swap.tres" id="3_s7xhp"]
 [ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="4_66ddt"]
+[ext_resource type="Texture2D" uid="uid://b3fnklb80e8h7" path="res://assets/sprites/game_area/shop.png" id="4_prr3p"]
+[ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/sprites/game_area/masa_png.png" id="5_c0xo3"]
 [ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="5_sw7tb"]
 [ext_resource type="PackedScene" uid="uid://6kq86axekhxe" path="res://src/scenes/dealer.tscn" id="6_s7xhp"]
 [ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="7_q62qk"]
@@ -96,6 +98,38 @@ script = ExtResource("1_jjama")
 spell_1 = ExtResource("2_sw7tb")
 spell_2 = ExtResource("3_s7xhp")
 
+[node name="Background" type="Control" parent="." unique_id=2135272910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BarnBG" type="TextureRect" parent="Background" unique_id=1538128530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_prr3p")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=86429302]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -250.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0040473, 1.17019)
+texture = ExtResource("5_c0xo3")
+expand_mode = 2
+
 [node name="CardHandler" type="Control" parent="." unique_id=731202902]
 layout_mode = 3
 anchors_preset = 15
@@ -103,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("2_66ddt")
 
 [node name="PlayerHand" parent="CardHandler" unique_id=1684568506 instance=ExtResource("7_q62qk")]
@@ -114,6 +149,20 @@ position = Vector2(785, 643)
 [node name="ClarvoyanceSlot" parent="CardHandler" unique_id=1937847011 instance=ExtResource("7_q62qk")]
 position = Vector2(1528, 872)
 
+[node name="SwapText" type="Label" parent="CardHandler" unique_id=1613446322]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 98.0
+offset_right = 5.0
+offset_bottom = 121.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+text = "Swap Cards"
+
 [node name="dealer" parent="." unique_id=614687088 instance=ExtResource("6_s7xhp")]
 position = Vector2(939, 411)
 
@@ -124,6 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="SpellButtons" type="HBoxContainer" parent="Player UI" unique_id=1387006467]
 layout_mode = 1
@@ -274,6 +324,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="Win Screen" parent="End Screens" unique_id=1751893349 instance=ExtResource("13_q62qk")]
 layer = -1
@@ -285,6 +336,7 @@ visible = false
 
 [connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
 [connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="value_changed" from="CardHandler" to="." method="_on_card_handler_value_changed"]
 [connection signal="player_prins" from="dealer" to="." method="_on_dealer_player_prins"]
 [connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="." method="_on_spell_1_pressed"]
 [connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="dealer" method="_on_spell_1_pressed"]

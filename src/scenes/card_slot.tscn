@@ -1,13 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0khibcvvxfwj"]
+[gd_scene format=3 uid="uid://c0khibcvvxfwj"]
 
 [ext_resource type="Script" uid="uid://copiqnunkfpxy" path="res://src/scripts/card_slot.gd" id="1_tmy3c"]
+[ext_resource type="Texture2D" uid="uid://nhbfu7a5ckt1" path="res://assets/cards/CLUBS/1.png" id="2_tmy3c"]
 
-[node name="CardSlot" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q8l2"]
+size = Vector2(680, 860)
+
+[node name="CardSlot" type="Node2D" unique_id=1052229109]
 scale = Vector2(0.15, 0.15)
 script = ExtResource("1_tmy3c")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217672774]
+texture = ExtResource("2_tmy3c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Area2D" type="Area2D" parent="." unique_id=1938929753]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377836311]
+position = Vector2(1.2715657e-05, -3.3333333)
+shape = SubResource("RectangleShape2D_7q8l2")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

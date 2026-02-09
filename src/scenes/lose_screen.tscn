@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cltr2olsu4bwt"]
 
-[ext_resource type="Script" uid="uid://bluc7qkf0r4xa" path="res://src/scenes/lose_screen.gd" id="1_s5tel"]
+[ext_resource type="Script" uid="uid://bluc7qkf0r4xa" path="res://src/scripts/lose_screen.gd" id="1_s5tel"]
 [ext_resource type="Texture2D" uid="uid://dgifh3oya2t4n" path="res://assets/game images/busted_screen.png" id="1_ymuny"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dktyg"]

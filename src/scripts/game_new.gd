@@ -29,11 +29,24 @@ signal end_round
 func add_card(target:String):
 	card_handler.add_card(target)
 
-func update_score(target):
-	if target == "player" :
+func _ready() -> void:
+	for each in 4 :
+		await get_tree().create_timer(0.75).timeout
+		if each % 2 == 0:
+			hit()
+		else:
+			add_card("dealer")
+			update_score("dealer")
+
+
+func update_score(_target):
+	if _target == "player" :
 		player_score = player_hand.calc_value()
 		player_score_display.text = str(player_score)
-	elif target == "dealer" :
+		if player_score > 21 :
+			bust = true
+			emit_signal("end_round")
+	elif _target == "dealer" :
 		dealer_score = dealer_hand.calc_value()
 		dealer_score_display.text = str(dealer_score)
 
@@ -65,9 +78,6 @@ func busted():
 
 func _on_hit_pressed() -> void:
 	hit()
-	if player_score > 21 :
-		bust = true
-		emit_signal("end_round")
 
 func _on_stand_pressed() -> void:
 	emit_signal("dealer_turn")
@@ -107,3 +117,7 @@ func _on_exit_pressed() -> void:
 
 func _on_dealer_player_prins() -> void:
 	busted()
+
+func _on_card_handler_value_changed() -> void:
+	update_score("player")
+	update_score("dealer")

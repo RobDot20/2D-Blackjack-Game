@@ -6,6 +6,7 @@ class_name CardInv
 @onready var card_scene = preload("res://src/scenes/card_slot.tscn")
 
 @export var inventory : Array[PlayingCard]
+#@export var slot_inv : Array[Slot]
 
 var value : int = 0
 var ace_in_pos : int = -1
@@ -13,9 +14,6 @@ var nr_pos_carte : int = 0
 var x_offset = 0.0
 var x_step = 150
 
-func _init() -> void:
-	pass
-	#inventory.resize(11) 
 
 func calc_value():
 	value = 0
@@ -34,3 +32,7 @@ func add_card(card:PlayingCard):
 	new_slot.change_card(card)
 	new_slot.position.x += x_offset
 	x_offset += x_step
+
+func remove_card():
+	get_child(1).queue_free()
+	x_offset -= x_step

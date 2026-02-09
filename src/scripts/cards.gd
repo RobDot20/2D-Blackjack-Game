@@ -14,3 +14,6 @@ enum Suit {
 @export_range(0,4) var ownership : int
 @export var suit : Suit
 @export var texture : Texture2D
+
+func getCardNumber():
+	return number
