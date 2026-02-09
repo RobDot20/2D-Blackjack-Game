@@ -2,7 +2,7 @@ extends Node2D
 class_name Slot
 
 @onready var sprite: Sprite2D = $Sprite2D
-
+@export var notclickable : bool = false
 @export var card : PlayingCard
 
 func change_card(new_card:PlayingCard):
@@ -10,7 +10,7 @@ func change_card(new_card:PlayingCard):
 	sprite.texture = new_card.texture
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton :
+	if event is InputEventMouseButton and notclickable == false :
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			#print("clicked!")
 			Globals.slot_clicked.emit(self)

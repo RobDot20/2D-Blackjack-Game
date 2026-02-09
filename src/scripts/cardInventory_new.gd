@@ -35,9 +35,11 @@ func calc_value():
 		slot_inv[ace_in_pos].card.value = 1
 	return value
 
-func add_card(card:PlayingCard):
-	inventory.append(card)
+func add_card(card:PlayingCard,notclickable : bool = false):
+	#inventory.append(card)
 	var new_slot : Slot = card_scene.instantiate()
+	if notclickable:
+		new_slot.notclickable = true
 	slot_inv.append(new_slot)
 	add_child(new_slot)
 	new_slot.change_card(card)

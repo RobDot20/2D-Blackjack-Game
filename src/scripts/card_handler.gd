@@ -25,9 +25,9 @@ func _ready() -> void:
 
 func add_card(target:String):
 	if target == "player" :
-		player_hand.add_card(play_deck.getCard(card_pos_deck))
+		player_hand.add_card(play_deck.getCard(card_pos_deck),false)
 	elif target == "dealer" :
-		dealer_hand.add_card(play_deck.getCard(card_pos_deck))
+		dealer_hand.add_card(play_deck.getCard(card_pos_deck),false)
 	card_pos_deck += 1
 
 
@@ -54,7 +54,7 @@ func seeNextCard():
 	#var next = next_card()
 	#print(next)
 	clar_active = true
-	clarvoyance_slot.add_card(play_deck.getCard(card_pos_deck))
+	clarvoyance_slot.add_card(play_deck.getCard(card_pos_deck),true)
 	await get_tree().create_timer(2).timeout
 	clarvoyance_slot.remove_card()
 	clar_active = false
