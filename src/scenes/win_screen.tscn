@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cyq47epxoe7aj"]
+
+[ext_resource type="Script" uid="uid://cj2s5i5tymih0" path="res://src/scripts/win_screen.gd" id="1_dktyg"]
+[ext_resource type="Texture2D" uid="uid://cleum1jpp1byw" path="res://assets/game images/win_screen.png" id="1_nqjk1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dktyg"]
+bg_color = Color(0, 0, 0, 0.40392157)
+
+[node name="Win Screen" type="CanvasLayer" unique_id=600419451]
+follow_viewport_enabled = true
+script = ExtResource("1_dktyg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1473585419]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nqjk1")
+
+[node name="Panel" type="Panel" parent="." unique_id=474635515]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dktyg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1819930264]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.75
+offset_top = -35.75
+offset_right = 124.75
+offset_bottom = 35.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" type="Button" parent="VBoxContainer" unique_id=2099465189]
+layout_mode = 2
+text = "Retry
+"
+
+[node name="Main Menu" type="Button" parent="VBoxContainer" unique_id=1654748417]
+layout_mode = 2
+text = "Main Menu
+"
+
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

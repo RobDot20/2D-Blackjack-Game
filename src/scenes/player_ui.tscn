@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="1_ake4q"]
 [ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="2_u4arh"]
 
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
 bg_color = Color(0.368627, 0.215686, 0, 0.392157)
 

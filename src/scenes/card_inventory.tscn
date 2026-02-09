@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcg0cksdf7l77"]
+
+[ext_resource type="Script" uid="uid://dn7se3fxdrd2p" path="res://src/scripts/cardInventory_new.gd" id="1_cc53b"]
+
+[node name="CardInventory" type="Node2D"]
+script = ExtResource("1_cc53b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

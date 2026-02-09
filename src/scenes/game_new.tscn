@@ -1,0 +1,351 @@
+[gd_scene format=3 uid="uid://cxyempt167cpj"]
+
+[ext_resource type="Script" uid="uid://dhfeqwcarkcup" path="res://src/scripts/game_new.gd" id="1_jjama"]
+[ext_resource type="Script" uid="uid://b633ycjypxmly" path="res://src/scripts/card_handler.gd" id="2_66ddt"]
+[ext_resource type="Resource" uid="uid://c63paucdj0sh0" path="res://src/Resources/Spells/Clarvoyance.tres" id="2_sw7tb"]
+[ext_resource type="Texture2D" uid="uid://bh2wtcp3o6wy8" path="res://assets/sprites/game_area/buton_hit.png" id="2_xkljl"]
+[ext_resource type="Texture2D" uid="uid://bmx7bntctm413" path="res://assets/sprites/game_area/hit_pressed.png" id="3_5kmjw"]
+[ext_resource type="Resource" uid="uid://dgex78laqhsch" path="res://src/Resources/Spells/Swap.tres" id="3_s7xhp"]
+[ext_resource type="Texture2D" uid="uid://coj3ltaxjvj81" path="res://assets/sprites/game_area/stand.png" id="4_66ddt"]
+[ext_resource type="Texture2D" uid="uid://b3fnklb80e8h7" path="res://assets/sprites/game_area/shop.png" id="4_prr3p"]
+[ext_resource type="Texture2D" uid="uid://bqyu5b7x7ph52" path="res://assets/sprites/game_area/masa_png.png" id="5_c0xo3"]
+[ext_resource type="Texture2D" uid="uid://ch2pj1i7mqycb" path="res://assets/sprites/game_area/stand_pressed.png" id="5_sw7tb"]
+[ext_resource type="PackedScene" uid="uid://6kq86axekhxe" path="res://src/scenes/dealer.tscn" id="6_s7xhp"]
+[ext_resource type="PackedScene" uid="uid://bcg0cksdf7l77" path="res://src/scenes/card_inventory.tscn" id="7_q62qk"]
+[ext_resource type="Script" uid="uid://brhfghhor2syu" path="res://src/scripts/label.gd" id="8_5kmjw"]
+[ext_resource type="Texture2D" uid="uid://gu0cj76ar3xj" path="res://assets/sprites/coin2_20x20.png" id="9_66ddt"]
+[ext_resource type="Script" uid="uid://cxxeuxb160y33" path="res://src/scripts/spell_button.gd" id="9_c0xo3"]
+[ext_resource type="PackedScene" uid="uid://cyq47epxoe7aj" path="res://src/scenes/win_screen.tscn" id="13_q62qk"]
+[ext_resource type="PackedScene" uid="uid://cltr2olsu4bwt" path="res://src/scenes/lose_screen.tscn" id="14_jv1k7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeqyw"]
+bg_color = Color(0.368627, 0.215686, 0, 0.392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jv1k7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5amjh"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tlj4"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npwpg"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f3mn"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r0g3"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvnco"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00c4o"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhtyg"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ucim"]
+atlas = ExtResource("9_66ddt")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88rra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5amjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tlj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npwpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f3mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r0g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvnco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00c4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhtyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ucim")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="GameNew" type="Node" unique_id=182881983]
+script = ExtResource("1_jjama")
+
+[node name="Background" type="Control" parent="." unique_id=2135272910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BarnBG" type="TextureRect" parent="Background" unique_id=1538128530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_prr3p")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=86429302]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -250.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0040473, 1.17019)
+texture = ExtResource("5_c0xo3")
+expand_mode = 2
+
+[node name="CardHandler" type="Control" parent="." unique_id=731202902]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_66ddt")
+
+[node name="PlayerHand" parent="CardHandler" unique_id=1684568506 instance=ExtResource("7_q62qk")]
+position = Vector2(172, 803)
+
+[node name="DealerHand" parent="CardHandler" unique_id=1157201797 instance=ExtResource("7_q62qk")]
+position = Vector2(785, 643)
+
+[node name="ClarvoyanceSlot" parent="CardHandler" unique_id=1937847011 instance=ExtResource("7_q62qk")]
+position = Vector2(1528, 872)
+
+[node name="SwapText" type="Label" parent="CardHandler" unique_id=1613446322]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 98.0
+offset_right = 5.0
+offset_bottom = 121.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+text = "Swap Cards"
+
+[node name="dealer" parent="." unique_id=614687088 instance=ExtResource("6_s7xhp")]
+position = Vector2(939, 411)
+
+[node name="Player UI" type="Control" parent="." unique_id=1969924758]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SpellButtons" type="HBoxContainer" parent="Player UI" unique_id=1387006467]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.649306
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Spell 1" type="Button" parent="Player UI/SpellButtons" unique_id=1714913294]
+layout_mode = 2
+text = "Spell 1"
+script = ExtResource("9_c0xo3")
+spell = ExtResource("2_sw7tb")
+
+[node name="Spell 2" type="Button" parent="Player UI/SpellButtons" unique_id=23511144]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Spell 2"
+script = ExtResource("9_c0xo3")
+spell = ExtResource("3_s7xhp")
+
+[node name="Score" type="HBoxContainer" parent="Player UI" unique_id=88919766]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_bottom = 46.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Player UI/Score" unique_id=716666331]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yeqyw")
+
+[node name="Label" type="Label" parent="Player UI/Score/Panel" unique_id=1333921081]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -12.999998
+offset_right = 14.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5319833, 0.9961418)
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "100
+"
+label_settings = SubResource("LabelSettings_jv1k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_5kmjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player UI/Score/Panel" unique_id=1743408624]
+position = Vector2(17, 21)
+sprite_frames = SubResource("SpriteFrames_88rra")
+animation = &"new_animation"
+frame_progress = 0.488634
+
+[node name="PlayerScore" type="VBoxContainer" parent="Player UI" unique_id=2011153580]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 99.0
+offset_bottom = 25.0
+grow_vertical = 2
+
+[node name="ScoreText" type="Label" parent="Player UI/PlayerScore" unique_id=1303556418]
+layout_mode = 2
+text = "Player score:"
+
+[node name="PlayerScoreDisplay" type="Label" parent="Player UI/PlayerScore" unique_id=1787279116]
+layout_mode = 2
+
+[node name="DealerScore" type="VBoxContainer" parent="Player UI" unique_id=1534786652]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="DealerScoreText" type="Label" parent="Player UI/DealerScore" unique_id=1300102010]
+layout_mode = 2
+text = "Dealer Score:"
+
+[node name="DealerScoreDisplay" type="Label" parent="Player UI/DealerScore" unique_id=1956070320]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Player UI" unique_id=349994190]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = -251.0
+offset_right = 502.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Hit" type="TextureButton" parent="Player UI/Buttons" unique_id=304827575]
+layout_mode = 2
+texture_normal = ExtResource("2_xkljl")
+texture_pressed = ExtResource("3_5kmjw")
+
+[node name="Stand" type="TextureButton" parent="Player UI/Buttons" unique_id=1441917390]
+layout_mode = 2
+texture_normal = ExtResource("4_66ddt")
+texture_pressed = ExtResource("5_sw7tb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player UI" unique_id=1655286730]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Restart" type="Button" parent="Player UI/HBoxContainer" unique_id=1669739970]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="Exit" type="Button" parent="Player UI/HBoxContainer" unique_id=1157108037]
+layout_mode = 2
+text = "Exit"
+
+[node name="End Screens" type="Control" parent="." unique_id=49078963]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Win Screen" parent="End Screens" unique_id=1751893349 instance=ExtResource("13_q62qk")]
+layer = -1
+visible = false
+
+[node name="Lose Screen" parent="End Screens" unique_id=158097282 instance=ExtResource("14_jv1k7")]
+layer = -1
+visible = false
+
+[connection signal="dealer_turn" from="." to="." method="_on_dealer_turn"]
+[connection signal="end_round" from="." to="." method="_on_end_round"]
+[connection signal="value_changed" from="CardHandler" to="." method="_on_card_handler_value_changed"]
+[connection signal="player_prins" from="dealer" to="." method="_on_dealer_player_prins"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="." method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 1" to="dealer" method="_on_spell_1_pressed"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 2" to="." method="_on_spell_2_pressed"]
+[connection signal="pressed" from="Player UI/SpellButtons/Spell 2" to="dealer" method="_on_spell_2_pressed"]
+[connection signal="pressed" from="Player UI/Buttons/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="Player UI/Buttons/Stand" to="." method="_on_stand_pressed"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Player UI/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

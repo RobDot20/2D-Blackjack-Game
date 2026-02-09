@@ -1,9 +1,9 @@
-extends Resource
+extends Node
 class_name Deck
 
 @export var deck: Array[PlayingCard]
 @export var sets : int = 1
-# Functie care initializeaza deck-ul de carti, se apeleaza cu Deck.new()
+
 func _init(param_sets, add_joker : bool) :
 	sets = param_sets
 	for each in sets:
@@ -25,6 +25,9 @@ func _init(param_sets, add_joker : bool) :
 						else:
 							new_card.value = 10
 						new_card.suit = i
+						var suit = PlayingCard.Suit.find_key(i)
+						#new_card.texture = load(dir_contents(suit,new_card.number))
+						new_card.texture = load("res://assets/cards/" + str(suit) + "/" + str(new_card.number) + ".png")
 						new_card.ownership = 0 # by default cardul nu este detinut de nimeni
 						deck.append(new_card)
 	# Jokerii nu au culoar sau valoare deoarece ne gandim ce (si daca) rol vor avea
@@ -35,7 +38,7 @@ func _init(param_sets, add_joker : bool) :
 				new_card.ownership = 0
 				deck.append(new_card)
 				print("joker function called")
-				
+	deck.shuffle()
 # DE URMAT: FUNCTIE CARE IA 2 POZITII DE CARTI RANDOM DIN ARRAY SI LE DA OWNERSHIP = 1 SI DUPA LA FEL NUMAI CA OWNERSHIP = 3
 
 func getIndex(card_number : int, card_face : int, card_set : int):
@@ -47,7 +50,7 @@ func getIndex(card_number : int, card_face : int, card_set : int):
 		printerr("card_number trebuie sa fie intre 1 si 13 (As-K) si card_face intre 1 si 4")
 		return null
 
-func randOwnership(n : int, owner : int):
+func randOwnership(n : int, card_owner : int):
 	var deck_size := deck.size()-1
 	var pos := randi_range(0, deck_size)
 	var index_log : Array
@@ -55,12 +58,17 @@ func randOwnership(n : int, owner : int):
 		# Cartea trebuie sa nu fie detinuta de nimeni ca sa poata primi ownership
 		while(deck[pos].ownership != 0):
 			pos = randi_range(0, deck_size)
-		deck[pos].ownership = owner
+		deck[pos].ownership = card_owner
 		index_log.append(pos)
+	if n == 1:
+		return pos
 	return index_log
 
-func setOwnership(index : int, owner : int):
-	deck[index].ownership = owner
+func getCard(pos:int):#func for getting card from deck to add card
+	return deck[pos]
+
+func setOwnership(index : int, card_owner : int):
+	deck[index].ownership = card_owner
 
 func removeOwnership(index : int):
 	deck[index].ownership = 0
@@ -84,8 +92,8 @@ func resetOwnership(_param_owner : int): # este _param_owner deoarece nu il folo
 func printCard(i):
 	print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
 
-func printCards(owner : int):
-	match owner:
+func printCards(card_owner : int):
+	match card_owner:
 		0:
 			print("Table cards:")
 		1:
@@ -96,9 +104,29 @@ func printCards(owner : int):
 			print("Dealer Cards:")
 	print("--------")
 	for i in deck.size():
-		if deck[i].ownership == owner:
+		if deck[i].ownership == card_owner:
 			printCard(i)
 			#print("Card number: ", deck[i].number, "(value = ", deck[i].value,")\nDeck Suit: ", PlayingCard.Suit.keys()[deck[i].suit], "\n","Card ownership: ",deck[i].ownership,"\n")
+
+func dir_contents(suit,num):
+	#parcurge folderul de carti dorit si returneaza path-ul catre poza dorita
+	var path = "res://assets/cards/" + suit
+	print(path)
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+			else:
+				#print("Found file: " + file_name)
+				if file_name == str(num) + ".png" :
+					print("res://assets/cards/" + suit + "/" + file_name)
+					return "res://assets/cards/" + suit + "/" + file_name
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
 
 # FUNCTIE CARE SA PARCURGA ARRAYUL SI SA DEA PRINT LA CARTILE CU OWNERSHIP = 1, OWNERSHIP = 2 (daca nu este null), OWNERSHIP = 3
 # FUNCTIE CARE SA PARCURGA ARRAYUL, DACA DOUA CARTI CU OWNERSHIP = 1 AU ACCEASI VALUE, DA PROMPT LA OPTIUNEA SPLIT

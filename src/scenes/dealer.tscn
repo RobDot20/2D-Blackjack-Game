@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://6kq86axekhxe"]
+
+[ext_resource type="Script" uid="uid://cerfikmp1brlf" path="res://src/scripts/dealer.gd" id="1_xjyer"]
+[ext_resource type="SpriteFrames" uid="uid://t5tuvxmiivhu" path="res://src/scenes/dealer.tres" id="2_fvu1y"]
+[ext_resource type="Script" uid="uid://ga33gbf85hoy" path="res://src/scripts/state_machine.gd" id="9_hdnxi"]
+
+[sub_resource type="GDScript" id="GDScript_58hj7"]
+
+[node name="dealer" type="Node2D"]
+script = ExtResource("1_xjyer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_fvu1y")
+animation = &"castiga jucatorul"
+script = SubResource("GDScript_58hj7")
+
+[node name="Statemachine" type="Node" parent="."]
+script = ExtResource("9_hdnxi")
