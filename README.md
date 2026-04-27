@@ -1,4 +1,4 @@
-# Game_jam
+# 2D-Blackjack-Game
 
 resources:
 https://magma.com/invite/41YZI8T0
